@@ -5,6 +5,14 @@ fullstack application.
 
 Node 4.x, Express 4.x, MongoDB/Mongoose, React - all ES6
 
+# Global Dependencies
+
+The project is configured to use `eslint` so it is recommended that you install that:
+
+```bash
+$ npm install -g eslint
+```
+
 # Server
 
 The server is a standard Express web app that relies on MongoDB for db stores for
