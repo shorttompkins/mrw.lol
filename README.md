@@ -48,11 +48,11 @@ transformation process.  This includes:
  * babel transformation (for ES6)
  * bundling to `app.js`
 
- ```bash
+```bash
 $ gulp
- ```
+```
 
- Will run with watchers as well so client rebuilds.
+_Will run with watchers as well so client rebuilds._
 
 ### Client
 
