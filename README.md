@@ -54,6 +54,6 @@ $ gulp
 
 _Will run with watchers as well so client rebuilds._
 
-### Client
+### Destination
 
 The client app builds and copies to the `public/apps/myapp/` folder.
