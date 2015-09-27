@@ -1,0 +1,16 @@
+{
+    "port": 3500,
+    "app": {
+        "from_email": "testing <test@myapp.io>"
+    },
+    "forgotpasscryptkey": "SECRETHERE",
+    "coreapi": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": "8000",
+        "version": "v1"
+    },
+    "mongodb": {
+      "host": "mongodb://localhost/myapp"
+    }
+}
