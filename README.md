@@ -12,7 +12,14 @@ the app as well as sessions.  Handlebars for view template rendering.
 
 Acts as a standard web server as well as serving static routes for the React app(s).
 Additionally will act as an API for the React client to consume.  May also act as
-an inbetween for external 3rd party API (to be determined; IMDB, et al);
+an in between for external 3rd party API (to be determined; IMDB, et al);
+
+## Dependencies
+
+```bash
+$ npm install
+$ npm start
+```
 
 # Client
 
@@ -29,7 +36,7 @@ $ npm install
 ## Build Process
 
 ```bash
-$ gulp
+$ gulp build
 $ open http://localhost:3500
 ```
 
@@ -40,7 +47,13 @@ transformation process.  This includes:
  * browserify
  * babel transformation (for ES6)
  * bundling to `app.js`
- * watchers
 
+ ```bash
+$ gulp
+ ```
+
+ Will run with watchers as well so client rebuilds.
 
 ### Client
+
+The client app builds and copies to the `public/apps/myapp/` folder.

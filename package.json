@@ -10,7 +10,7 @@
     "url": ""
   },
   "scripts": {
-    "start": "NODE_ENV=dev gulp"
+    "start": "NODE_ENV=dev node server/server.js"
   },
   "engines": {
     "node": ">=4.1.1"
