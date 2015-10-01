@@ -1,3 +1,4 @@
+import React from 'react'
 import { Route, DefaultRoute } from 'react-router'
 import App from './components/app'
 import Catalog from './components/catalog/catalog'
