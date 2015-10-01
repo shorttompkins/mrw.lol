@@ -10,7 +10,7 @@
     "url": ""
   },
   "scripts": {
-    "start": "NODE_ENV=dev node server/server.js"
+    "start": "NODE_ENV=dev node --use_strict server/server.js"
   },
   "engines": {
     "node": ">=4.1.1"
@@ -24,6 +24,7 @@
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "express-session": "^1.11.3",
+    "faker": "^3.0.1",
     "flux": "^2.1.1",
     "lodash": "~3.7.0",
     "method-override": "^2.3.5",

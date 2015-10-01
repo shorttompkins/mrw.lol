@@ -1,16 +1,16 @@
 let mongoose = require('mongoose')
 
 let CommentSchema = new mongoose.Schema({
-  image_id:   { type: mongoose.ObjectId },
+  post_id:   { type: mongoose.Schema.ObjectId },
+  timestamp:  { type: Date, 'default': Date.now },
   email:      { type: String },
   name:       { type: String },
   gravatar:   { type: String },
-  comment:    { type: String },
-  timestamp:  { type: Date, 'default': Date.now }
+  comment:    { type: String }
 })
 
-CommentSchema.virtual('image')
-  .set((image) => this._image = image)
-  .get(() => this._image)
+CommentSchema.virtual('post')
+  .set((post) => this._post = post)
+  .get(() => this._post)
 
 module.exports = mongoose.model('Comment', CommentSchema)
