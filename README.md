@@ -5,6 +5,15 @@ fullstack application.
 
 Node 4.x, Express 4.x, MongoDB/Mongoose, React - all ES6
 
+# TL;DR:
+
+```bash
+$ npm install
+$ gulp
+$ monogd (in a separate terminal instance)
+$ npm start
+```
+
 # Global Dependencies
 
 The project is configured to use `eslint` so it is recommended that you install that:
@@ -45,7 +54,6 @@ $ npm install
 
 ```bash
 $ gulp build
-$ open http://localhost:3500
 ```
 
 Runs gulp in watch mode, which will watch for changes and perform a Browserify
@@ -65,3 +73,20 @@ _Will run with watchers as well so client rebuilds._
 ### Destination
 
 The client app builds and copies to the `public/apps/myapp/` folder.
+
+# Server
+
+Ensure that the local MongoDB server is running:
+
+```bash
+$ mongod
+```
+
+Then in a separate terminal instance, launch the Node server:
+
+```bash
+$ npm start
+```
+
+Note that this launches the Node server using the `--use_strict` flag so that
+ES6 can be properly supported (i.e. `let` etc.)
