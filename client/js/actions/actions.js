@@ -1,24 +1,24 @@
-import AppConstants from '../constants/constants'
+import ActionTypes from '../constants/ActionTypes'
 import AppDispatcher from '../dispatchers/dispatcher'
 import request from 'superagent'
 
 export default {
   loadPosts() {
     AppDispatcher.dispatch({
-      actionType: AppConstants.LOAD_POSTS
+      actionType: ActionTypes.LOAD_POSTS
     })
 
-    // do async thing here:
     request
       .get('/api/posts')
       .end(function(err, res){
         if (err) {
           AppDispatcher.dispatch({
-            actionType: AppConstants.LOAD_POSTS_FAIL
+            actionType: ActionTypes.LOAD_POSTS_FAIL,
+            error: err
           })
         } else {
           AppDispatcher.dispatch({
-            actionType: AppConstants.LOAD_POSTS_SUCCESS,
+            actionType: ActionTypes.LOAD_POSTS_SUCCESS,
             posts: res.body
           })
         }
@@ -27,20 +27,20 @@ export default {
 
   loadPost(id) {
     AppDispatcher.dispatch({
-      actionType: AppConstants.LOAD_POST
+      actionType: ActionTypes.LOAD_POST
     })
 
-    // do async thing here:
     request
       .get(`/api/posts/${id}`)
       .end(function(err, res){
         if (err) {
           AppDispatcher.dispatch({
-            actionType: AppConstants.LOAD_POST_FAIL
+            actionType: ActionTypes.LOAD_POST_FAIL,
+            error: err
           })
         } else {
           AppDispatcher.dispatch({
-            actionType: AppConstants.LOAD_POST_SUCCESS,
+            actionType: ActionTypes.LOAD_POST_SUCCESS,
             post: res.body
           })
         }

@@ -13,7 +13,7 @@ module.exports.initialize = function(app, router) {
 
 
   // ** API **
-  
+
   // POSTS:
   router.get('/api/posts', api.posts.list)
   router.get('/api/posts/:id', api.posts.getById)

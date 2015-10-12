@@ -1,49 +1,43 @@
 import React, { Component } from 'react'
 import AppActions from '../../actions/actions'
-import AppStore from '../../stores/store'
+import PostsListStore from '../../stores/PostsListStore'
 import PostsList from '../../components/posts/list'
 
-// let loader = {
-//   active: {
-//     display: 'block'
-//   },
-//   inactive: {
-//     display: 'none'
-//   }
-// }
-
-export default class List extends Component {
+class List extends Component {
   constructor() {
     super()
     this.state = this._getPosts()
-    this._onChange = this._onChange.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.componentWillUnmount = this.componentWillUnmount.bind(this)
   }
 
-  componentDidMount() {
-    AppStore.addChangeListener(this._onChange)
-
-    if (!this.state.posts.length) {
-      AppActions.loadPosts()
-    }
+  componentDidMount = () => {
+    PostsListStore.addChangeListener(this._onChange)
   }
 
-  componentWillUnmount() {
-    AppStore.removeChangeListener(this._onChange)
+  componentWillUnmount = () => {
+    PostsListStore.removeChangeListener(this._onChange)
   }
 
-  _onChange() {
+  _onChange = () => {
     this.setState(this._getPosts())
   }
 
   _getPosts() {
-    return { posts: AppStore.getPosts() }
+    return { posts: PostsListStore.getPosts() }
   }
 
   render() {
+    if (!this.state.posts.length) { return <img src="/public/images/loading.gif" /> }
+
     return (
       <PostsList posts={this.state.posts} />
     )
   }
 }
+
+List.willTransitionTo = function() {
+  if (!PostsListStore.getPosts().length) {
+    AppActions.loadPosts()
+  }
+}
+
+export default List

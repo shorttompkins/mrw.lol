@@ -1,44 +1,48 @@
 import React, { Component, PropTypes } from 'react'
 import AppActions from '../../actions/actions'
-import AppStore from '../../stores/store'
+import PostStore from '../../stores/PostStore'
 import Post from '../../components/posts/post'
 
-export default class List extends Component {
+class List extends Component {
   static propTypes = {
     params: PropTypes.object
   }
 
   constructor() {
     super()
-    this._onChange = this._onChange.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.state = this._getPost()
   }
 
-  componentDidMount() {
-    AppStore.addChangeListener(this._onChange)
-    AppActions.loadPost(this.props.params.postid)
+  componentDidMount = () => {
+    PostStore.addChangeListener(this._onChange)
+  }
+
+  componentWillUnmount = () => {
+    PostStore.removeChangeListener(this._onChange)
+  }
+
+  _onChange = () => {
     this.setState(this._getPost())
-
-  }
-
-  componentWillUnmount() {
-    AppStore.removeChangeListener(this._onChange)
-  }
-
-  _onChange() {
-    this.setState(this._getPost(this.props.params.postid))
   }
 
   _getPost() {
-    return { post: AppStore.getPost() }
+    return { post: PostStore.getPost() }
   }
 
   render() {
-    if (!this.state) { return null }
+    if (!this.state.post) { return <img src="/public/images/loading.gif" /> }
 
     return (
       <Post post={this.state.post} />
     )
   }
 }
+
+List.willTransitionTo = function(transition, params) {
+  // dont reload the last Post if its the same
+  if (!PostStore.getPost() || PostStore.getPost()._id !== params.postid) {
+    AppActions.loadPost(params.postid)
+  }
+}
+
+export default List
