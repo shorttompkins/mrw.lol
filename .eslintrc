@@ -15,7 +15,8 @@
             "never"
         ],
         "react/prop-types": 1,
-        "react/no-multi-comp": 1
+        "react/no-multi-comp": 1,
+        "no-unused-vars": [2, {"args": "after-used", "varsIgnorePattern": "^React"}]
     },
     "env": {
         "es6": true,
