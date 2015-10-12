@@ -1,5 +1,5 @@
 module.exports = {
-  myapp(req, res) {
-    res.render('apps/myapp')
+  blog(req, res) {
+    res.render('apps/blog')
   }
 }

@@ -2,17 +2,17 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     babelify = require('babelify'),
     del = require('del'),
-    nodemon = require('gulp-nodemon'),
-    source = require('vinyl-source-stream');
+    //nodemon = require('gulp-nodemon'),
+    source = require('vinyl-source-stream')
 
 gulp.task('clean', function(cb) {
-  del(['server/public/apps/myapp/*'], cb);
-});
+  del(['server/public/apps/blog/**'], cb)
+})
 
 gulp.task('copy', function() {
-  return gulp.src('client/index.html')
-    .pipe(gulp.dest('server/public/apps'));
-});
+  return gulp.src(['client/img/**/*'])
+    .pipe(gulp.dest('server/public/apps/blog/img'))
+})
 
 gulp.task('transform', function () {
   browserify({
@@ -23,11 +23,11 @@ gulp.task('transform', function () {
   .transform(babelify, { stage: 0})
   .bundle()
   .pipe(source('app.js'))
-  .pipe(gulp.dest('server/public/apps/myapp'));
-});
+  .pipe(gulp.dest('server/public/apps/blog'))
+})
 
-gulp.task('default', ['clean', 'transform'], function() {
-  gulp.watch('client/**/*', ['transform']);
-});
+gulp.task('default', ['clean', 'copy', 'transform'], function() {
+  gulp.watch('client/**/*', ['transform'])
+})
 
-gulp.task('build', ['clean', 'transform']);
+gulp.task('build', ['clean', 'copy', 'transform'])

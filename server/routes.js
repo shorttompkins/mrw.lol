@@ -3,19 +3,23 @@ var controllers = require('./controllers'),
 
 module.exports.initialize = function(app, router) {
 
+  // ** BASIC WEB PAGES **
   router.get('/', controllers.home.index)
   router.get('/about', controllers.about.index)
 
-  // static route mapping for app routes:
-  router.get('/apps/myapp*', controllers.apps.myapp)
+
+  // ** APPS **
+  router.get('/apps/blog*', controllers.apps.blog)
+
 
   // ** API **
-    // POSTS:
+  
+  // POSTS:
   router.get('/api/posts', api.posts.list)
   router.get('/api/posts/:id', api.posts.getById)
-  router.post('/api/posts', api.posts.insert)
+  //router.post('/api/posts', api.posts.insert)
 
-    // SEED DATA:
+  // SEED DATA:
   router.get('/api/seed', api.posts.seed)
 
   app.use('/', router)

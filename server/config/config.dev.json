@@ -11,6 +11,6 @@
         "version": "v1"
     },
     "mongodb": {
-      "host": "mongodb://localhost/myapp"
+      "host": "mongodb://localhost/react-blog"
     }
 }
