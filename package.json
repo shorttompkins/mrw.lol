@@ -32,9 +32,7 @@
     "morgan": "^1.6.1",
     "multer": "^1.0.5",
     "react": "^0.13.3",
-    "react-async": "^2.1.0",
     "react-router": "^0.13.3",
-    "react-router-component": "^0.26.0",
     "sanitize-html": "^1.10.0",
     "superagent": "^1.4.0",
     "underscore": "^1.8.3"

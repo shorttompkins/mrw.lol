@@ -13,17 +13,10 @@ class List extends Component {
     this.state = this._getPost()
   }
 
-  componentDidMount = () => {
-    PostStore.addChangeListener(this._onChange)
-  }
-
-  componentWillUnmount = () => {
-    PostStore.removeChangeListener(this._onChange)
-  }
-
-  _onChange = () => {
-    this.setState(this._getPost())
-  }
+  // boilerplate - nice to refactor out...
+  componentDidMount = () => { PostStore.addChangeListener(this._onChange) }
+  componentWillUnmount = () => { PostStore.removeChangeListener(this._onChange) }
+  _onChange = () => { this.setState(this._getPost()) }
 
   _getPost() {
     return { post: PostStore.getPost() }

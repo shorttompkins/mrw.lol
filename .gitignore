@@ -13,3 +13,4 @@ npm-debug.log
 #Compiled sources
 build
 public/apps
+server/public/apps

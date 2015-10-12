@@ -9,10 +9,7 @@ let _posts = []
 
 let PostsListStore = _.extend({}, EventEmitter.prototype, {
 
-  emitChange() {
-    console.log(' --> ListStore emittingChange')
-    this.emit(CHANGE_EVENT)
-  },
+  emitChange() { this.emit(CHANGE_EVENT) },
   addChangeListener(callback) { this.on(CHANGE_EVENT, callback) },
   removeChangeListener(callback) { this.removeListener(CHANGE_EVENT, callback) },
 
@@ -22,7 +19,6 @@ let PostsListStore = _.extend({}, EventEmitter.prototype, {
 })
 
 PostsListStore.dispatcherToken = AppDispatcher.register(function(payload) {
-  console.log('ListStore dispatched:', payload)
   switch(payload.actionType) {
     case ActionTypes.LOAD_POSTS_SUCCESS:
       _posts = payload.posts
