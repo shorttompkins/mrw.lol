@@ -1,9 +1,11 @@
 # React App
 
-Forked from the `react-sandbox` app.  Building this out into a more full fledged
-fullstack application.
+Experimental full stack ES6 React/Flux application.  Uses my own flavor of file
+organization/structure/architecture based on reading 100 articles and videos etc.
 
-Node 4.x, Express 4.x, MongoDB/Mongoose, React - all ES6
+Currently its a blog, sort of, but may change.
+
+Node 4.x, Express 4.x, MongoDB & Mongoose, React & Flux
 
 # TL;DR:
 
