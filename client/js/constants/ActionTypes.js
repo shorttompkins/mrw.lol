@@ -1,11 +1,9 @@
-import keyMirror from 'react/lib/keyMirror'
+export default {
+  LOAD_POSTS: 'LOAD_POSTS',
+  LOAD_POSTS_SUCCESS: 'LOAD_POSTS_SUCCESS',
+  LOAD_POSTS_FAIL: 'LOAD_POSTS_FAIL',
 
-export default keyMirror({
-  LOAD_POSTS: null,
-  LOAD_POSTS_SUCCESS: null,
-  LOAD_POSTS_FAIL: null,
-
-  LOAD_POST: null,
-  LOAD_POST_SUCCESS: null,
-  LOAD_POST_FAIL: null
-})
+  LOAD_POST: 'LOAD_POST',
+  LOAD_POST_SUCCESS: 'LOAD_POST_SUCCESS',
+  LOAD_POST_FAIL: 'LOAD_POST_FAIL'
+}
