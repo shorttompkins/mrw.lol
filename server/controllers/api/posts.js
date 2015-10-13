@@ -37,9 +37,28 @@ module.exports = {
           let newPost = new Models.Post({
             title: faker.company.catchPhrase(),
             blurb: faker.lorem.sentences(),
-            body: faker.lorem.paragraphs()
+            body: faker.lorem.paragraphs() + faker.lorem.paragraphs() + faker.lorem.paragraphs()
           })
-          newPost.save((err, newPost) => console.log(`successfully inserted post: ${newPost._id}`))
+          newPost.save((err, newPost) => {
+            console.log(`successfully inserted post: ${newPost._id}`)
+            if (s === 0) {
+              let holdPostID = newPost._id
+              for (let c=0; c < 5; c += 1) {
+
+                let newComment = new Models.Comment({
+                  post_id: holdPostID,
+                  email: faker.internet.email(),
+                  name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+                  comment: faker.lorem.sentences(),
+                  gravatar: faker.internet.avatar()
+                })
+
+                newComment.save((err, newComment) => {
+                  console.log(`successfully inserted post comment: ${newComment._id}`);
+                })
+              }
+            }
+          })
         }
 
       } else {
