@@ -9,9 +9,17 @@ Node 4.x, Express 4.x, MongoDB/Mongoose, React - all ES6
 
 ```bash
 $ npm install
+```
+
+In separate terminal instances:
+
+```bash
 $ gulp
-$ monogd (in a separate terminal instance)
+$ monogd
 $ npm start
+```
+
+```bash
 $ open http://localhost:3500
 ```
 
