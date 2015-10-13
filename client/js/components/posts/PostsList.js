@@ -13,7 +13,7 @@ export default class PostsList extends Component {
   render() {
     if (this.props.posts && this.props.posts.length) {
       let posts_list = this.props.posts.map((post) => {
-        return <Brief data={post} key={post._id} />
+        return <Brief post={post} key={post._id} />
       })
       return (
         <div className="posts">

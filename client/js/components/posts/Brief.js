@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 class Brief extends Component {
   static propTypes = {
-    data: React.PropTypes.object
+    post: React.PropTypes.object.isRequired
   }
 
   constructor() {
@@ -11,10 +11,11 @@ class Brief extends Component {
   }
 
   render() {
+    let { post } = this.props
     return (
       <div className="brief">
-        <Link to={'/apps/blog/posts/' + this.props.data._id} className="title">{this.props.data.title}</Link>
-        <p className="description">{this.props.data.blurb}</p>
+        <Link to={`/apps/blog/posts/${post._id}`} className="title"><strong>{post.title}</strong></Link>
+        <p className="description">{post.blurb}</p>
       </div>
     )
   }
