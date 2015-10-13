@@ -67,12 +67,13 @@ $ npm install
 $ gulp build
 ```
 
-Runs gulp in watch mode, which will watch for changes and perform a Browserify transformation process.  This includes:
+Runs gulp which performs the following:
 
  * clean
  * Browserify
  * Babel transformation (for ES6)
  * bundling to `app.js` & copying to `/server/public/apps/blog/app.js`
+ * SASS transpiling to `main.css` & copying to `server/public/apps/blog/main.css`
 
 ```bash
 $ gulp
