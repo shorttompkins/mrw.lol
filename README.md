@@ -1,7 +1,6 @@
 # React App
 
-Experimental full stack ES6 React/Flux application.  Uses my own flavor of file
-organization/structure/architecture based on reading 100 articles and videos etc.
+Experimental full stack ES6 React/Flux application.  Uses my own flavor of file organization/structure/architecture based on reading ~100 articles and videos etc.
 
 Currently its a blog, sort of, but may change.
 
