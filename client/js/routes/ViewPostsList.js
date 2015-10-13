@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import PostsListStore from '../../stores/PostsListStore'
-import PostsList from '../../components/posts/list'
+import PostsListStore from '../stores/PostsListStore'
+import PostsList from '../components/posts/PostsList'
 
-class List extends Component {
+export default class ViewPostsList extends Component {
   constructor() {
     super()
     this.state = this._getPosts()
@@ -25,5 +25,3 @@ class List extends Component {
     )
   }
 }
-
-export default List

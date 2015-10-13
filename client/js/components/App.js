@@ -1,7 +1,7 @@
-import React from 'react'
-import Header from '../components/layout/header'
+import React, { Component } from 'react'
+import Header from '../components/layout/Header'
 
-class App extends React.Component {
+export default class App extends Component {
   static propTypes = {
     children: React.PropTypes.node
   }
@@ -22,5 +22,3 @@ class App extends React.Component {
     )
   }
 }
-
-export default App

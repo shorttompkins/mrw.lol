@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-class Brief extends React.Component {
+class Brief extends Component {
   static propTypes = {
     data: React.PropTypes.object
   }

@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import AppActions from '../../actions/actions'
-import PostStore from '../../stores/PostStore'
-import Post from '../../components/posts/post'
+import PostStore from '../stores/PostStore'
+import Post from '../components/posts/Post'
 
-class List extends Component {
+class ViewPost extends Component {
   static propTypes = {
     params: PropTypes.object
   }
@@ -31,11 +30,4 @@ class List extends Component {
   }
 }
 
-// List.willTransitionTo = function(transition, params) {
-//   // dont reload the last Post if its the same
-//   if (!PostStore.getPost() || PostStore.getPost()._id !== params.postid) {
-//     AppActions.loadPost(params.postid)
-//   }
-// }
-
-export default List
+export default ViewPost

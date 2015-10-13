@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
-import Brief from './brief'
+import Brief from './Brief'
 
-class PostsList extends Component {
+export default class PostsList extends Component {
   static propTypes = {
     posts: PropTypes.array.isRequired
   }
@@ -28,5 +28,3 @@ class PostsList extends Component {
 
   }
 }
-
-export default PostsList

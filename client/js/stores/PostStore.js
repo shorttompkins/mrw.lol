@@ -1,4 +1,4 @@
-import AppDispatcher from '../dispatchers/dispatcher'
+import AppDispatcher from '../dispatchers/Dispatcher'
 import ActionTypes from '../constants/ActionTypes.js'
 import _ from 'lodash'
 import { EventEmitter } from 'events'

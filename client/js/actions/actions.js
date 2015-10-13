@@ -1,5 +1,5 @@
 import ActionTypes from '../constants/ActionTypes'
-import AppDispatcher from '../dispatchers/dispatcher'
+import AppDispatcher from '../dispatchers/Dispatcher'
 import request from 'superagent'
 
 export default {
