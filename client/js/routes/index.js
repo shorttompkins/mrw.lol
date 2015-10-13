@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
-import AppActions from '../actions/actions'
+import AppActions from '../actions/Actions'
 import App from '../components/App'
 import ViewPostsList from './ViewPostsList'
 import ViewPost from './ViewPost'
