@@ -5,7 +5,7 @@ import { EventEmitter } from 'events'
 
 const CHANGE_EVENT = 'change'
 
-let _current_post
+let _current_post, _comments = []
 
 let PostStore = _.extend({}, EventEmitter.prototype, {
 
@@ -15,6 +15,10 @@ let PostStore = _.extend({}, EventEmitter.prototype, {
 
   getPost() {
     return _current_post
+  },
+
+  getComments() {
+    return _comments
   }
 })
 
@@ -26,6 +30,10 @@ PostStore.dispatcherToken = AppDispatcher.register(function(payload) {
       break
     case ActionTypes.LOAD_POST_SUCCESS:
       _current_post = payload.post
+      PostStore.emitChange()
+      break
+    case ActionTypes.LOAD_POST_COMMENTS_SUCCESS:
+      _comments = payload.comments
       PostStore.emitChange()
       break
   }

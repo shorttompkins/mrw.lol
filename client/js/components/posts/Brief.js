@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-class Brief extends Component {
+export default class Brief extends Component {
   static propTypes = {
     post: React.PropTypes.object.isRequired
   }
@@ -20,5 +20,3 @@ class Brief extends Component {
     )
   }
 }
-
-export default Brief

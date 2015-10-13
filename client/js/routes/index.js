@@ -8,6 +8,9 @@ import ViewPost from './ViewPost'
 export default (
   <Route path="/apps/blog/" component={App}>
     <IndexRoute component={ViewPostsList} onEnter={()=>{AppActions.loadPosts()}}/>
-    <Route path="posts/:postid" component={ViewPost} onEnter={(location) => {AppActions.loadPost(location.params.postid)}} />
+    <Route path="posts/:postid" component={ViewPost} onEnter={(location) => {
+      AppActions.loadPost(location.params.postid)
+      AppActions.loadPostComments(location.params.postid)
+    }} />
   </Route>
 )

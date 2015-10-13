@@ -45,5 +45,27 @@ export default {
           })
         }
       })
+  },
+
+  loadPostComments(id) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_POST_COMMENTS
+    })
+
+    request
+      .get(`/api/posts/${id}/comments`)
+      .end(function(err, res){
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_POST_COMMENTS_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_POST_COMMENTS_SUCCESS,
+            comments: res.body
+          })
+        }
+      })
   }
 }

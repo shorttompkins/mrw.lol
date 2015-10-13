@@ -18,14 +18,14 @@ class ViewPost extends Component {
   _onChange = () => { this.setState(this._getPost()) }
 
   _getPost() {
-    return { post: PostStore.getPost() }
+    return { post: PostStore.getPost(), comments: PostStore.getComments() }
   }
 
   render() {
     if (!this.state.post) { return <img src="/public/images/loading.gif" /> }
 
     return (
-      <Post post={this.state.post} />
+      <Post post={this.state.post} comments={this.state.comments} />
     )
   }
 }
