@@ -12,7 +12,13 @@ $ npm install
 $ gulp
 $ monogd (in a separate terminal instance)
 $ npm start
+$ open http://localhost:3500
 ```
+
+## Seed data
+
+Point your browser to `http://localhost:3500/api/seed` to populate the database
+with some sample data.
 
 # Global Dependencies
 
