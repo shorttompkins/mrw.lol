@@ -31,11 +31,11 @@ class List extends Component {
   }
 }
 
-List.willTransitionTo = function(transition, params) {
-  // dont reload the last Post if its the same
-  if (!PostStore.getPost() || PostStore.getPost()._id !== params.postid) {
-    AppActions.loadPost(params.postid)
-  }
-}
+// List.willTransitionTo = function(transition, params) {
+//   // dont reload the last Post if its the same
+//   if (!PostStore.getPost() || PostStore.getPost()._id !== params.postid) {
+//     AppActions.loadPost(params.postid)
+//   }
+// }
 
 export default List

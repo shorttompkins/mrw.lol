@@ -1,6 +1,5 @@
 import React from 'react'
 import Header from '../components/layout/header'
-import { RouteHandler } from 'react-router'
 
 class App extends React.Component {
   static propTypes = {
@@ -17,7 +16,7 @@ class App extends React.Component {
         <Header />
         <hr size="1" />
         <div className="container">
-          <RouteHandler />
+          {this.props.children}
         </div>
       </div>
     )

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AppActions from '../../actions/actions'
 import PostsListStore from '../../stores/PostsListStore'
 import PostsList from '../../components/posts/list'
 
@@ -24,12 +23,6 @@ class List extends Component {
     return (
       <PostsList posts={this.state.posts} />
     )
-  }
-}
-
-List.willTransitionTo = function() {
-  if (!PostsListStore.getPosts().length) {
-    AppActions.loadPosts()
   }
 }
 
