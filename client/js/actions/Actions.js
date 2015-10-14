@@ -67,5 +67,28 @@ export default {
           })
         }
       })
+  },
+
+  postNewComment(comment) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.NEW_POST_COMMENT
+    })
+
+    request
+      .post(`/api/posts/${comment.postid}/comments`)
+      .send({name: comment.name, email: comment.email, comment: comment.comment})
+      .end(function(err, res){
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.NEW_POST_COMMENT_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.NEW_POST_COMMENT_SUCCESS,
+            comment: res.body.comment
+          })
+        }
+      })
   }
 }

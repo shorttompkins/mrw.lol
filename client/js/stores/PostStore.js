@@ -36,6 +36,10 @@ PostStore.dispatcherToken = AppDispatcher.register(function(payload) {
       _comments = payload.comments
       PostStore.emitChange()
       break
+    case ActionTypes.NEW_POST_COMMENT_SUCCESS:
+      _comments.push(payload.comment)
+      PostStore.emitChange()
+      break
   }
 })
 

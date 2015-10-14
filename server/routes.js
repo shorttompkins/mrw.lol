@@ -18,7 +18,7 @@ module.exports.initialize = function(app, router) {
   router.get('/api/posts', api.posts.list)
   router.get('/api/posts/:id', api.posts.getById)
   router.get('/api/posts/:id/comments', api.comments.getCommentsByPostId)
-  //router.post('/api/posts', api.posts.insert)
+  router.post('/api/posts/:id/comments', api.comments.createNewComment)
 
   // SEED DATA:
   router.get('/api/seed', api.posts.seed)

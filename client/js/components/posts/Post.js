@@ -15,7 +15,7 @@ export default class Post extends Component {
   render() {
     const { post, comments } = this.props
 
-    if (!post) return null
+    if (!post || !post._id) return null
 
     return (
       <div className="post">
@@ -26,7 +26,7 @@ export default class Post extends Component {
           {post.body}
         </div>
         <br/>
-        <CommentsList comments={comments} />
+        <CommentsList postid={post._id} comments={comments} />
         <br/>
         <Link to="/apps/blog/"> &lt;&lt; Back to Posts</Link>
       </div>
