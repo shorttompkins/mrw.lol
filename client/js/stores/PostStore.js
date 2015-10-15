@@ -1,28 +1,18 @@
-import AppDispatcher from '../dispatchers/Dispatcher'
+import baseStore from '../utils/baseStore'
 import ActionTypes from '../constants/ActionTypes.js'
-import _ from 'lodash'
-import { EventEmitter } from 'events'
-
-const CHANGE_EVENT = 'change'
 
 let _current_post, _comments = []
 
-let PostStore = _.extend({}, EventEmitter.prototype, {
-
-  emitChange() { this.emit(CHANGE_EVENT) },
-  addChangeListener(callback) { this.on(CHANGE_EVENT, callback) },
-  removeChangeListener(callback) { this.removeListener(CHANGE_EVENT, callback) },
-
+let PostStore = baseStore({
   getPost() {
     return _current_post
   },
-
   getComments() {
     return _comments
   }
 })
 
-PostStore.dispatcherToken = AppDispatcher.register(function(payload) {
+PostStore.dispatchHandler = (payload) => {
   switch(payload.actionType) {
     case ActionTypes.LOAD_POST:
       _current_post = {}
@@ -41,6 +31,6 @@ PostStore.dispatcherToken = AppDispatcher.register(function(payload) {
       PostStore.emitChange()
       break
   }
-})
+}
 
 export default PostStore
