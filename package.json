@@ -27,6 +27,7 @@
     "faker": "^3.0.1",
     "flux": "^2.1.1",
     "history": "^1.12.5",
+    "keymirror": "^0.1.1",
     "lodash": "~3.7.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.1.8",
