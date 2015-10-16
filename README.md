@@ -85,6 +85,9 @@ _Performs the standard build and runs watchers to perform automatic client rebui
 # CHANGE LOG
 Going to try to keep track as much as possible major (and minor) changes I make to this repo as I go.
 
+## 2015-10-16
+- Introduced first `Stateless Functional Component` with the Brief component.  These were introduced with React 0.14.
+
 ## 2015-10-15
 - Introduced `utils` that contains `baseStore` extender which wraps a Store with the common convention for EventEmitting and all the other juicy boilerplate.
 - Introduced `connectToStores` as a `util` that wraps Components in a Higher Order Component that extends it by providing a lot of the Store watching boilerplate.  Learn more here: http://bit.ly/1abPkrP.
