@@ -80,3 +80,13 @@ $ gulp
 ```
 
 _Performs the standard build and runs watchers to perform automatic client rebuilds._
+
+
+# CHANGE LOG
+Going to try to keep track as much as possible major (and minor) changes I make to this repo as I go.
+
+## 2015-10-15
+- Introduced `utils` that contains `baseStore` extender which wraps a Store with the common convent for EventEmitting and all the other juicy boilerplate.
+- Introduced `connectToStores` as a `util` that wraps Components in a Higher Order Component that extends it by providing a lot of the Store watching boilerplate.  Learn more here: http://bit.ly/1abPkrP.
+- Refactored the wrapper Components within `routes` to use the `connectToStores` stuff instead so that we can completely eliminate them altogether.
+- Brought in `keyMirror` to make maintaining Constants easier (and cleaner).
