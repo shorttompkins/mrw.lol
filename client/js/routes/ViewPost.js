@@ -1,33 +1,37 @@
 import React, { Component, PropTypes } from 'react'
+import connectToStores from '../utils/connectToStores'
 import PostStore from '../stores/PostStore'
 import Post from '../components/posts/Post'
 
 class ViewPost extends Component {
   static propTypes = {
-    params: PropTypes.object
+    params: PropTypes.object.isRequired,
+    post: PropTypes.object,
+    comments: PropTypes.array
   }
 
   constructor() {
     super()
-    this.state = this._getPost()
   }
 
-  // boilerplate - nice to refactor out...
-  componentDidMount = () => { PostStore.addChangeListener(this._onChange) }
-  componentWillUnmount = () => { PostStore.removeChangeListener(this._onChange) }
-  _onChange = () => { this.setState(this._getPost()) }
+  static getStores() {
+    return [PostStore]
+  }
 
-  _getPost() {
-    return { post: PostStore.getPost(), comments: PostStore.getComments() }
+  static getStateFromStores() {
+    return {
+      post: PostStore.getPost(),
+      comments: PostStore.getComments()
+    }
   }
 
   render() {
-    if (!this.state.post) { return <img src="/public/images/loading.gif" /> }
+    if (!this.props.post) { return <img src="/public/images/loading.gif" /> }
 
     return (
-      <Post post={this.state.post} comments={this.state.comments} />
+      <Post post={this.props.post} comments={this.props.comments} />
     )
   }
 }
 
-export default ViewPost
+export default connectToStores(ViewPost)
