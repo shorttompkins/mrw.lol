@@ -89,4 +89,11 @@ Going to try to keep track as much as possible major (and minor) changes I make 
 - Introduced `utils` that contains `baseStore` extender which wraps a Store with the common convention for EventEmitting and all the other juicy boilerplate.
 - Introduced `connectToStores` as a `util` that wraps Components in a Higher Order Component that extends it by providing a lot of the Store watching boilerplate.  Learn more here: http://bit.ly/1abPkrP.
 - Refactored the wrapper Components within `routes` to use the `connectToStores` stuff instead so that we can completely eliminate them altogether.
+
+## 2015-10-14
 - Brought in `keyMirror` to make maintaining Constants easier (and cleaner).
+
+## 2015-10-13
+- Introduced Gulp SASS for dynamic transpiled CSS stylesheets
+- Created Comments section and New Comment posting form/functionality
+- Include seed comments with sample data
