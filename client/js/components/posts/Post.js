@@ -1,18 +1,29 @@
-import React, { PropTypes, Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import connectToStores from '../../utils/connectToStores'
+import PostStore from '../../stores/PostStore'
 import CommentsList from '../comments/CommentsList'
 
-export default class Post extends Component {
+class Post extends Component {
   static propTypes = {
-    post: PropTypes.object.isRequired,
-    comments: PropTypes.array.isRequired
+    post: PropTypes.object,
+    comments: PropTypes.array
   }
 
-  constructor() {
-    super()
+  static getStores() {
+    return [PostStore]
+  }
+
+  static getStateFromStores() {
+    return {
+      post: PostStore.getPost(),
+      comments: PostStore.getComments()
+    }
   }
 
   render() {
+    if (!this.props.post) { return <img src="/public/images/loading.gif" /> }
+
     const { post, comments } = this.props
 
     if (!post || !post._id) return null
@@ -33,3 +44,5 @@ export default class Post extends Component {
     )
   }
 }
+
+export default connectToStores(Post)

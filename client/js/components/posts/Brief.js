@@ -6,10 +6,6 @@ export default class Brief extends Component {
     post: React.PropTypes.object.isRequired
   }
 
-  constructor() {
-    super()
-  }
-
   render() {
     let { post } = this.props
     return (
