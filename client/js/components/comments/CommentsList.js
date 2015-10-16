@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
 import NewComment from './NewComment'
 
-export default class CommentsList extends Component {
+class CommentsList extends Component {
   static propTypes = {
     postid: PropTypes.string.isRequired,
     comments: PropTypes.array.isRequired
@@ -38,3 +38,5 @@ export default class CommentsList extends Component {
     )
   }
 }
+
+export default CommentsList

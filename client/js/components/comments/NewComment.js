@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import AppActions from '../../actions/Actions'
 
-export default class NewComment extends Component {
+class NewComment extends Component {
   static propTypes = {
     postid: PropTypes.string.isRequired
   }
@@ -15,7 +15,7 @@ export default class NewComment extends Component {
     })
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.refs.name.focus()
   }
 
@@ -32,3 +32,5 @@ export default class NewComment extends Component {
     )
   }
 }
+
+export default NewComment

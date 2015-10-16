@@ -19,13 +19,12 @@ class PostsList extends Component {
   render() {
     if (!this.props.posts) { return <img src="/public/images/loading.gif" /> }
 
-    let posts_list = this.props.posts.map((post) => {
-      return <Brief post={post} key={post._id} />
-    })
+    let posts_list = this.props.posts.map((post) => <Brief post={post} key={post._id} />)
     return (
       <div className="posts">
         {posts_list}
       </div>
+
     )
   }
 }
