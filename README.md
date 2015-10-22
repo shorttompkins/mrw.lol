@@ -85,6 +85,12 @@ _Performs the standard build and runs watchers to perform automatic client rebui
 # CHANGE LOG
 Going to try to keep track as much as possible major (and minor) changes I make to this repo as I go.
 
+## 2015-10-22
+- Introduced Passport.js for Social Networking login/registration
+- Introduced UserModel (to support Passport)
+- Basic static CSS for main website pages/layout
+- .gitignore API credentials/keys/secrets (because they are a secret!)
+
 ## 2015-10-16
 - Introduced first `Stateless Functional Component` with the Brief component.  These were introduced with React 0.14.
 
