@@ -2,11 +2,12 @@
 
 var path = require('path'),
     express = require('express'),
-    routes = require('./routes'),
     //apiHelper = require('../api/helper'),
     fs = require('fs'),
-    middleware = require('./middleware'),
+    passport = require('passport'),
     mongoose = require('mongoose'),
+    routes = require('./routes'),
+    middleware = require('./middleware'),
     MongoStore = require('connect-mongo')(middleware.session)
 
 module.exports = function(app, config) {
@@ -18,6 +19,9 @@ module.exports = function(app, config) {
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   }))
+
+  app.use(passport.initialize())
+  app.use(passport.session())
 
   app.set('views', __dirname + '/views')
   var hbs = middleware.exphbs.create({
