@@ -16,4 +16,4 @@ public/apps
 server/public/apps
 
 #Secret stuff
-server/config
+server/config/auth.js
