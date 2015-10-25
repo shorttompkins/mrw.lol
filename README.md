@@ -85,6 +85,11 @@ _Performs the standard build and runs watchers to perform automatic client rebui
 # CHANGE LOG
 Going to try to keep track as much as possible major (and minor) changes I make to this repo as I go.
 
+## 2015-10-24
+- Introduced Bootstrap into the project, so it looks half decent
+- Migrated the app so that it loads as the homepage of the website.  The website itself can still serve static pages via specific routes.  Anything else defaults to the homepage (for SPA handling).
+- Started converting the app to use "MRW" to fit the end goal of the actual website (i.e. http://mrw.lol)
+
 ## 2015-10-22
 - Introduced Passport.js for Social Networking login/registration
 - Introduced UserModel (to support Passport)
