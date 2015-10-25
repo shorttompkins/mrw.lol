@@ -3,14 +3,8 @@ var controllers = require('./controllers'),
     auth = require('./controllers/auth.js')
 
 module.exports.initialize = function(app, router) {
-
   // ** BASIC WEB PAGES **
-  router.get('/', controllers.home.index)
   router.get('/about', controllers.about.index)
-
-
-  // ** APPS **
-  router.get('/apps/blog*', controllers.apps.blog)
 
   // ** AUTHENTICATION **
   function authHandler(req, res) {
@@ -34,7 +28,6 @@ module.exports.initialize = function(app, router) {
     res.redirect('/')
   })
 
-
   // ** API **
 
   // POSTS:
@@ -45,6 +38,10 @@ module.exports.initialize = function(app, router) {
 
   // SEED DATA:
   router.get('/api/seed', api.posts.seed)
+
+
+  // Every other route defaults to the homepage (because of SPA):
+  router.get('/*', controllers.home.index)
 
   app.use('/', router)
 }

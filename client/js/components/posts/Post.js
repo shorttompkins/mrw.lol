@@ -39,7 +39,7 @@ class Post extends Component {
         <br/>
         <CommentsList postid={post._id} comments={comments} />
         <br/>
-        <Link to="/apps/blog/"> &lt;&lt; Back to Posts</Link>
+        <Link to="/"> &lt;&lt; Back to Posts</Link>
       </div>
     )
   }

@@ -7,18 +7,18 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream')
 
 gulp.task('clean', function(cb) {
-  del(['server/public/apps/blog/**'], cb)
+  del(['server/public/mrw/**'], cb)
 })
 
 gulp.task('copy', function() {
   return gulp.src(['client/img/**/*'])
-    .pipe(gulp.dest('server/public/apps/blog/img'))
+    .pipe(gulp.dest('server/public/mrw/img'))
 })
 
 gulp.task('sass', function () {
   gulp.src('client/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('server/public/apps/blog/'))
+    .pipe(gulp.dest('server/public/mrw/'))
 })
 
 gulp.task('transform', function () {
@@ -30,7 +30,7 @@ gulp.task('transform', function () {
   .transform(babelify, { stage: 0})
   .bundle()
   .pipe(source('app.js'))
-  .pipe(gulp.dest('server/public/apps/blog'))
+  .pipe(gulp.dest('server/public/mrw'))
 })
 
 gulp.task('default', ['clean', 'copy', 'transform', 'sass'], function() {

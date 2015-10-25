@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Header from '../components/layout/Header'
+import Header from './layout/header'
 
 class App extends Component {
   static propTypes = {
@@ -14,9 +14,13 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <hr size="1" />
+
         <div className="container">
-          {this.props.children}
+          <div className="row">
+            <div className="col-sm-12">
+              {this.props.children}
+            </div>
+          </div>
         </div>
       </div>
     )

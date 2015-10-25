@@ -6,7 +6,7 @@ import PostsList from './components/posts/PostsList'
 import Post from './components/posts/Post'
 
 export default (
-  <Route path="/apps/blog/" component={App}>
+  <Route path="/" component={App}>
     <IndexRoute component={PostsList} onEnter={()=>{AppActions.loadPosts()}}/>
     <Route path="posts/:postid" component={Post} onEnter={(location) => {
       AppActions.loadPost(location.params.postid)
