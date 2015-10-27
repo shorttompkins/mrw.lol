@@ -9,28 +9,37 @@ let passport = require('passport'),
     }
 
 let handler = (accessToken, refreshToken, profile, done) => {
-  let uniqueVal, avatar = ''
+  let unique_val, avatar = ''
 
   switch(profile.provider) {
     case 'facebook':
-      uniqueVal = profile.emails[0].value
+      unique_val = profile.emails[0].value
       avatar = profile.photos[0].value
       break
     case 'twitter':
-      uniqueVal = profile.username
+      unique_val = profile.username
       avatar = profile.photos[0].value
       break
     case 'google':
-      uniqueVal = profile.emails[0].value
+      unique_val = profile.emails[0].value
       avatar = profile.photos[0].value
       break
     case 'github':
-      uniqueVal = profile.emails[0].value
+      unique_val = profile.emails[0].value
       break
   }
 
-  let searchQuery = { uniqueVal: uniqueVal },
-      updates = { name: profile.displayName, networkID: profile.id, provider: profile.provider, uniqueVal: uniqueVal, accessToken: accessToken, avatar: avatar },
+  let searchQuery = { unique_val: unique_val },
+      updates = {
+        name: profile.displayName,
+        social: {
+          network_id: profile.id,
+          provider: profile.provider,
+          unique_val: unique_val,
+          access_token: accessToken,
+          avatar: avatar
+        }
+      },
       options = { upsert: true }
 
   Models.User.findOneAndUpdate(searchQuery, updates, options, (err, user) => {
