@@ -1,13 +1,13 @@
 {
-  "name": "myapp",
-  "version": "0.0.0",
-  "description": "",
-  "author": "shorttompkins",
+  "name": "MRW.lol",
+  "version": "0.0.1",
+  "description": "Fullstack JavaScript application using Node.js, Express, MongoDB, Mongoose, React and Flux.",
+  "author": "ShortTompkins",
   "private": false,
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/shorttompkins/mrw.lol"
   },
   "scripts": {
     "start": "NODE_ENV=dev node --use_strict server/server.js"

@@ -1,12 +1,16 @@
-# React App
+# MRW.lol
 
-Experimental full stack ES6 React/Flux application.  Uses my own flavor of file organization/structure/architecture based on reading ~100 articles and videos etc.
+MRW.lol, a.k.a My Reaction When, is an open-source fullstack JavaScript application. The goal of this project is to act as a main starting point for developers that want to learn more about fullstack JavaScript development.
 
-Currently its a blog, sort of, but may change.
+The application itself is divided into 2 major parts, client and server.
 
-Node 4.x, Express 4.x, MongoDB & Mongoose, React & Flux
+Everything is written using ES2015 (i.e. ES6) with some experimental features as well.
 
-# TL;DR:
+The server is written using Node.js 4.x with the Express framework.  The database layer is MongoDB with Mongoose.
+
+The client is a single page application using React.js with the Flux pattern.  No flux framework is currently being used.
+
+# Getting Started TL;DR:
 
 ```bash
 $ npm install
@@ -83,7 +87,9 @@ _Performs the standard build and runs watchers to perform automatic client rebui
 
 
 # CHANGE LOG
-Going to try to keep track as much as possible major (and minor) changes I make to this repo as I go.
+
+## 2015-10-26
+- Renamed the repo to officially represent MRW.lol
 
 ## 2015-10-24
 - Introduced Bootstrap into the project, so it looks half decent
