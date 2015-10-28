@@ -11,6 +11,6 @@
         "version": "v1"
     },
     "mongodb": {
-      "host": "mongodb://localhost/react-blog"
+      "host": "mongodb://localhost/mrw-lol"
     }
 }
