@@ -30,14 +30,15 @@ module.exports.initialize = function(app, router) {
 
   // ** API **
 
-  // POSTS:
-  router.get('/api/posts', api.posts.list)
-  router.get('/api/posts/:id', api.posts.getById)
-  router.get('/api/posts/:id/comments', api.comments.getCommentsByPostId)
-  router.post('/api/posts/:id/comments', api.comments.createNewComment)
+  // IMAGES:
+  router.get('/api/images', api.images.list)
+  router.get('/api/images/:tag', api.images.listByTag)
+  router.get('/api/users/:userid/images', api.images.listByUserId)
+  router.get('/api/users/:userid/images/:tag', api.images.listByUserIdTag)
+
 
   // SEED DATA:
-  router.get('/api/seed', api.posts.seed)
+  router.get('/api/seed', api.images.seed)
 
 
   // Every other route defaults to the homepage (because of SPA):
