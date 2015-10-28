@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2015-10-27
+- Swapped out the data Models and Schemas to support the mrw.lol needs (i.e. Images instead of Posts, etc.)
+- Included new API endpoints for image queries - by user, by tag, etc.
+
 ## 2015-10-26
 - Renamed the repo to officially represent MRW.lol
 
