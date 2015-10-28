@@ -10,11 +10,11 @@ let passport = require('passport'),
 
 let handler = (accessToken, refreshToken, profile, done) => {
   let unique_val, avatar = ''
-
+  
   switch(profile.provider) {
     case 'facebook':
       unique_val = profile.emails[0].value
-      avatar = profile.photos[0].value
+      //avatar = profile.photos[0].value
       break
     case 'twitter':
       unique_val = profile.username
@@ -29,7 +29,7 @@ let handler = (accessToken, refreshToken, profile, done) => {
       break
   }
 
-  let searchQuery = { unique_val: unique_val },
+  let searchQuery = { 'social.unique_val': unique_val },
       updates = {
         name: profile.displayName,
         social: {
