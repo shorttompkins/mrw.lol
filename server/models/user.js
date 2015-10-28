@@ -1,13 +1,13 @@
 let mongoose = require('mongoose'),
     Schema = mongoose.Schema
 
-let UserImageSchema = new Schema({
-  image_id:   Schema.Types.ObjectId,
-  timestamp:  { type: Date, default: Date.now },
-  tags:       [String]
+let UserTagSchema = new Schema({
+  name:       String,
+  images:     [Schema.Types.ObjectId],
+  timestamp:  { type: Date, default: Date.now }
 })
 
-let UserSchema = new mongoose.Schema({
+let UserSchema = new Schema({
   name:         String,
   timestamp:    { type: Date, default: Date.now },
   // TO DO: need a unique display name for the site itself
@@ -18,7 +18,7 @@ let UserSchema = new mongoose.Schema({
     access_token: String,
     avatar:       String
   },
-  images:       [UserImageSchema]
+  tags:         [UserTagSchema]
 })
 
 module.exports = mongoose.model('User', UserSchema)
