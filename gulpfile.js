@@ -38,4 +38,4 @@ gulp.task('default', ['clean', 'copy', 'transform', 'sass'], function() {
   gulp.watch('client/sass/**/*.scss', ['sass'])
 })
 
-gulp.task('build', ['clean', 'copy', 'transform'])
+gulp.task('build', ['clean', 'copy', 'sass', 'transform'])

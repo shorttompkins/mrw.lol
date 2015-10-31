@@ -28,7 +28,11 @@ config = _.extend({}, _.pick(pkg, 'name', 'version'), config)
 app.set('port', process.env.PORT || config.port || 5500)
 
 // connect to the db server:
-mongoose.connect(config.mongodb.host)
+if (process.env.NODE_ENV === 'prod') {
+  mongoose.connect(`mongodb://${process.env.MONGO_PORT_27017_TCP_ADDR}:${process.env.MONGO_PORT_27017_TCP_PORT}/${config.mongodb.db}`)
+} else {
+  mongoose.connect(`${config.mongodb.host}${config.mongodb.db}`)
+}
 mongoose.connection.on('open', () => {
   console.log('MongoDB connected.')
 
@@ -36,7 +40,7 @@ mongoose.connection.on('open', () => {
   app = configure(app, config)
 
   // boot up the server:
-  let server = app.listen(app.get('port'), () => {
+  app.listen(app.get('port'), () => {
     console.log(`Server listening at http://localhost:${app.get('port')}`)
   })
 })
