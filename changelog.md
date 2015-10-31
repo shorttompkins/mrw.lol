@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 2015-10-30
+- Dockerized the project!  Now the project can easily be run within a Docker container and use a linked MongoDB container as well.
+
 ## 2015-10-27
 - Swapped out the data Models and Schemas to support the mrw.lol needs (i.e. Images instead of Posts, etc.)
 - Included new API endpoints for image queries - by user, by tag, etc.
