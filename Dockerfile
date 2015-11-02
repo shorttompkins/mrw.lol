@@ -1,5 +1,5 @@
 FROM node:4.2.1
-ADD . /var/www
+COPY . /var/www
 WORKDIR /var/www
 
 RUN npm install -g gulp
@@ -15,5 +15,6 @@ ENV HOME /usr/local/nonroot
 
 EXPOSE 3500
 ENV NODE_ENV=prod
+RUN npm rebuild node-sass
 RUN npm install
 RUN gulp build

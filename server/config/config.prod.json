@@ -1,3 +1,6 @@
 {
-    "port": 3500
+    "port": 3500,
+    "mongodb": {
+      "db": "mrw-lol",
+    }
 }

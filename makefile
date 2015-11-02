@@ -17,4 +17,4 @@ run_app:
 	--name mrw.app \
 	--link mrw.mongodb:mongo \
 	mrw.node \
-	npm start
+	node --use_strict server/server.js
