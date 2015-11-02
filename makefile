@@ -7,14 +7,14 @@ run_mongodb:
 	docker run \
 	--name mrw.mongodb \
 	-v '$PWD'/data:/data/db \
-	-it --rm \
+	-d \
 	mongo:latest
 
 run_app:
 	docker run \
-	-d --rm \
-	-p 3500:3500 \
+	-d \
+	-p 80:3500 \
 	--name mrw.app \
 	--link mrw.mongodb:mongo \
-	mrw-node \
+	mrw.node \
 	npm start
