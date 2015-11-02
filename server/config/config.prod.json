@@ -1,6 +1,6 @@
 {
     "port": 3500,
     "mongodb": {
-      "db": "mrw-lol",
+      "db": "mrw-lol"
     }
 }
