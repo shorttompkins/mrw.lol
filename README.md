@@ -89,9 +89,9 @@ _Performs the standard build and runs watchers to perform automatic client rebui
 
 The project has been setup to be easily deployed using Docker.  Simple make commands are included:
 
- * `make build_node` - builds the Node Docker image (see `Dockerfile`)
+ * `make build_node` - builds the Node Docker image (see `Dockerfile`) (mrw.node)
  * `make run_mongodb` - launches a stock MongoDB Docker container (mrw.mongodb)
- * `make run_app` - launches the app via the custom Node Docker container (mrw.node)
+ * `make run_app` - launches the app via the custom Node Docker container (mrw.app)
 
 
 # CHANGE LOG
