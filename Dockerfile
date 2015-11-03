@@ -2,6 +2,9 @@ FROM node:4.2.1
 COPY . /var/www
 WORKDIR /var/www
 
+RUN apt-get update
+RUN apt-get install -y libkrb5-dev
+
 RUN npm install -g gulp
 
 # Create a nonroot user, and switch to it

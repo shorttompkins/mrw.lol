@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2015-11-2
+- More Docker setup/fixes stuff. A few tiny tweaks because the steps in the Dockerfile will fail randomly (npm install) on Digital Ocean and its super frustrating but there also seems to be no logical reason.
+- Pushed the repo to a Digital Ocean instance and it should be live at http://mrw.lol
+
 ## 2015-10-30
 - Dockerized the project!  Now the project can easily be run within a Docker container and use a linked MongoDB container as well.
 
