@@ -1,6 +1,12 @@
 # CHANGE LOG
 
 ## 2015-11-3
+- Swap out the `PostsList` with `ImagesList` Component on the homepage and display a collection of Images via a sample "Card" component
+- Update the Actions, Constants, and Stores to support Images (replacing Posts)
+- Include search by tag from the Header Component
+- Include a new `util/history` module for easily reusing react-router's history (using `location.pushState()` from within a component, etc)
+
+## 2015-11-3
 - Include a few more helpful make commands including `db_connect` and `bash_app`
 
 ## 2015-11-2

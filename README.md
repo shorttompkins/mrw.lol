@@ -30,6 +30,10 @@ $ open http://localhost:3500
 
 ## Seed data
 
+Before you can seed data, you need a valid user account.  The easiest way to get one (currently) is to simply point your browser to http://mrw.lol:3500/auth/twitter (or `facebook`, or `google`, or `github`).  *Important Note:* Its best to edit your `/etc/hosts` file and include `127.0.0.1 mrw.lol` so that the social network properly redirects back to the website.
+
+*Second Important Note:* your local `server/config/auth.js` file will need to be updated with the appropriate social network API key/values.
+
 Point your browser to `http://localhost:3500/api/seed` to populate the database with some sample data.
 
 # Global Dependencies
