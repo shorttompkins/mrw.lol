@@ -1,13 +1,13 @@
 import keyMirror from 'keymirror'
 
 export default keyMirror({
-  LOAD_POSTS: null,
-  LOAD_POSTS_SUCCESS: null,
-  LOAD_POSTS_FAIL: null,
+  LOAD_IMAGES: null,
+  LOAD_IMAGES_SUCCESS: null,
+  LOAD_IMAGES_FAIL: null,
 
-  LOAD_POST: null,
-  LOAD_POST_SUCCESS: null,
-  LOAD_POST_FAIL: null,
+  LOAD_IMAGES_BYTAG: null,
+  LOAD_IMAGES_BYTAG_SUCCESS: null,
+  LOAD_IMAGES_BYTAG_FAIL: null,
 
   LOAD_POST_COMMENTS: null,
   LOAD_POST_COMMENTS_SUCCESS: null,
