@@ -33,6 +33,9 @@ module.exports.initialize = function(app, router) {
   // IMAGES:
   router.get('/api/images', api.images.list)
   router.get('/api/images/:tag', api.images.listByTag)
+
+  router.get('/api/image/:filename', api.images.getImageByFilename)
+  
   router.get('/api/users/:userid/images', api.images.listByUserId)
   router.get('/api/users/:userid/images/:tag', api.images.listByUserIdTag)
 

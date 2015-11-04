@@ -4,6 +4,7 @@ let Models = require('../../models'),
 module.exports = {
   list(req, res) {
     Models.Image.find({}, (err, images) => {
+      // to do: would be nice to append list of tags associated with this image
       res.json(images)
     })
   },
@@ -15,10 +16,15 @@ module.exports = {
       { $match: { 'tags.name': req.params.tag }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
-      let ids = imageids[0].images.map(image => new ObjectId(image))
-      Models.Image.find({_id: { $in: ids } }, (err, images) => {
-        res.json(images)
-      })
+      if (imageids.length) {
+        let ids = imageids[0].images.map(image => new ObjectId(image))
+        Models.Image.find({_id: { $in: ids } }, (err, images) => {
+          // to do: would be nice to append list of tags associated with this image
+          res.json(images)
+        })
+      } else {
+        res.json([])
+      }
     })
   },
 
@@ -29,10 +35,15 @@ module.exports = {
       { $match: { 'social.unique_val': req.params.userid }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
-      let ids = imageids[0].images.map(image => new ObjectId(image))
-      Models.Image.find({_id: { $in: ids } }, (err, images) => {
-        res.json(images)
-      })
+      if (imageids.length) {
+        let ids = imageids[0].images.map(image => new ObjectId(image))
+        Models.Image.find({_id: { $in: ids } }, (err, images) => {
+          // to do: would be nice to append list of tags associated with this image
+          res.json(images)
+        })
+      } else {
+        res.json([])
+      }
     })
   },
 
@@ -43,10 +54,23 @@ module.exports = {
       { $match: { 'social.unique_val': req.params.userid, 'tags.name': req.params.tag }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
-      let ids = imageids[0].images.map(image => new ObjectId(image))
-      Models.Image.find({_id: { $in: ids } }, (err, images) => {
-        res.json(images)
-      })
+      if (imageids.length) {
+        let ids = imageids[0].images.map(image => new ObjectId(image))
+        Models.Image.find({_id: { $in: ids } }, (err, images) => {
+          // to do: would be nice to append list of tags associated with this image
+          res.json(images)
+        })
+      } else {
+        res.json([])
+      }
+    })
+  },
+
+  getImageByFilename(req, res) {
+    console.log(encodeURIComponent(req.params.filename))
+    Models.Image.findOne({filename: encodeURIComponent(req.params.filename)}, (err, image) => {
+      // to do: would be nice to append list of tags associated with this image
+      res.json(image)
     })
   },
 
