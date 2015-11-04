@@ -2,15 +2,13 @@ import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 import AppActions from './actions/Actions'
 import App from './components/App'
-import PostsList from './components/posts/PostsList'
-import Post from './components/posts/Post'
+import ImagesList from './components/images/ImagesList'
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={PostsList} onEnter={()=>{AppActions.loadPosts()}}/>
-    <Route path="posts/:postid" component={Post} onEnter={(location) => {
-      AppActions.loadPost(location.params.postid)
-      AppActions.loadPostComments(location.params.postid)
+    <IndexRoute component={ImagesList} onEnter={()=>{AppActions.loadImages()}}/>
+    <Route path="images/:tag" component={ImagesList} onEnter={(location) => {
+      AppActions.loadImagesByTag(location.params.tag)
     }} />
   </Route>
 )
