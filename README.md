@@ -93,6 +93,11 @@ The project has been setup to be easily deployed using Docker.  Simple make comm
  * `make run_mongodb` - launches a stock MongoDB Docker container (mrw.mongodb)
  * `make run_app` - launches the app via the custom Node Docker container (mrw.app)
 
+Helpful utility commands:
+
+ * `make bash_app` - for bash shell into the node app to run manually (for debugging)
+ * `make db_connect` - to connect to the local MongoDB server via the Mongo shell
+
 
 # CHANGE LOG
 
