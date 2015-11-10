@@ -3,6 +3,7 @@
 ## 2015-11-10
 - Remove Bootstrap dependency - wasn't a huge fan and it wasn't really giving us much other than bloated HTML and a few nicities.
 - Include normalize.css
+- Include login module Components and logic
 
 ## 2015-11-3
 - Swap out the `PostsList` with `ImagesList` Component on the homepage and display a collection of Images via a sample "Card" component
