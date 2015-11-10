@@ -66,8 +66,14 @@ module.exports = {
     })
   },
 
+  getImageById(req, res) {
+    Models.Image.findOne({_id: req.params.id}, (err, image) => {
+      // to do: would be nice to append list of tags associated with this image
+      res.json(image)
+    })
+  },
+
   getImageByFilename(req, res) {
-    console.log(encodeURIComponent(req.params.filename))
     Models.Image.findOne({filename: encodeURIComponent(req.params.filename)}, (err, image) => {
       // to do: would be nice to append list of tags associated with this image
       res.json(image)
