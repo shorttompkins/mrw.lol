@@ -1,17 +1,35 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import connectToStores from '../../utils/connectToStores'
 import { Link } from 'react-router'
 import history from '../../utils/history'
+import Login from './login'
+import Logout from './logout'
+import UserStore from '../../stores/UserStore'
 
 class Header extends Component {
+  static propTypes = {
+    userid: PropTypes.string
+  }
+
+  static getStores() {
+    return [UserStore]
+  }
+
+  static getStateFromStores() {
+    return { userid: UserStore.getUserid() }
+  }
+
   tagSearch = () => {
     history.pushState(null, `/images/${this.refs.tag.value}`)
     this.refs.tag.value = ''
   }
+
   inputEnter = (event) => {
     if (event.key === 'Enter') {
       this.tagSearch()
     }
   }
+
   render() {
     return (
       <div className="page-header">
@@ -26,14 +44,16 @@ class Header extends Component {
               <i className="fa fa-search"></i>
             </button>
           </div>
+          {(this.props.userid) ?
+            <button type="button" className="button add-button"><i className="fa fa-plus"></i> Add Image</button>
+            : (<div></div>)
+          }
         </div>
 
-        <div className="login-links">
-          Login | Register
-        </div>
+        {(this.props.userid) ? <Logout /> : <Login />}
       </div>
     )
   }
 }
 
-export default Header
+export default connectToStores(Header)
