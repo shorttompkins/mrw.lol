@@ -9,6 +9,11 @@
   </head>
   <body>
     <div id="app"></div>
+    <script type="text/javascript">
+    {{#if loggedin}}
+    window.userid = '{{loggedin}}';
+    {{/if}}
+    </script>
     <script type="text/javascript" src="/public/mrw/app.js"></script>
   </body>
 </html>
