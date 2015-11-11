@@ -13,7 +13,7 @@ module.exports = {
     Models.User.aggregate([
       { $unwind: '$tags' },
       { $unwind: '$tags.images' },
-      { $match: { 'tags.name': req.params.tag }},
+      { $match: { 'tags.name': req.params.tag.toLowerCase() }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
       if (imageids.length) {
@@ -51,7 +51,7 @@ module.exports = {
     Models.User.aggregate([
       { $unwind: '$tags' },
       { $unwind: '$tags.images' },
-      { $match: { 'social.unique_val': req.params.userid, 'tags.name': req.params.tag }},
+      { $match: { 'social.unique_val': req.params.userid, 'tags.name': req.params.tag.toLowerCase() }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
       if (imageids.length) {
@@ -74,7 +74,7 @@ module.exports = {
   },
 
   getImageByFilename(req, res) {
-    Models.Image.findOne({filename: encodeURIComponent(req.params.filename)}, (err, image) => {
+    Models.Image.findOne({filename: encodeURIComponent(req.params.filename.toLowerCase())}, (err, image) => {
       // to do: would be nice to append list of tags associated with this image
       res.json(image)
     })
