@@ -1,9 +1,9 @@
 FROM node:4.2.2
 COPY . /var/www
 WORKDIR /var/www
-
-RUN apt-get update
-RUN apt-get install -y libkrb5-dev
+ 
+# RUN apt-get update
+# RUN apt-get install -y libkrb5-dev
 
 RUN npm install -g gulp --loglevel error
 
