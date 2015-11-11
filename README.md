@@ -101,6 +101,7 @@ Helpful utility commands:
 
  * `make bash_app` - for bash shell into the node app to run manually (for debugging)
  * `make db_connect` - to connect to the local MongoDB server via the Mongo shell
+ * `make clean_exited` - to remove any old/stale exited Docker instances
 
 
 # CHANGE LOG
