@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import connectToStores from '../../utils/connectToStores'
 import { Link } from 'react-router'
 import history from '../../utils/history'
-import Login from './login'
-import Logout from './logout'
+import Login from './Login'
+import Logout from './Logout'
 import UserStore from '../../stores/UserStore'
 
 class Header extends Component {

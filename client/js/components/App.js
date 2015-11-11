@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Header from './layout/header'
+import Header from './layout/Header'
 
 class App extends Component {
   static propTypes = {
