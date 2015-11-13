@@ -12,7 +12,7 @@ export default (
       AppActions.loadImagesByTag(location.params.tag)
     }} />
     <Route path="image/:id" component={Image} onEnter={(location) => {
-      AppActions.loadImageByFilename(location.params.id)
+      AppActions.loadImageByUniqueId(location.params.id)
     }} />
   </Route>
 )

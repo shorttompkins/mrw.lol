@@ -53,7 +53,28 @@ export default {
 
     request
       .get(`/api/image/${id}`)
-      .end(function(err, res){
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGE_BYID_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGE_BYID_SUCCESS,
+            image: res.body
+          })
+        }
+      })
+  },
+  loadImageByUniqueId(uniqueid) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_IMAGE_BYID
+    })
+
+    request
+      .get(`/api/image/${uniqueid}`)
+      .end((err, res) =>{
         if (err) {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_IMAGE_BYID_FAIL,
