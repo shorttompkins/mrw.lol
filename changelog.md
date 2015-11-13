@@ -1,6 +1,6 @@
 # CHANGE LOG
 
-## 2015-11-11
+## 2015-11-12
 - You can now add an image!  For now it only works via URL, and even then just saves the URL to the db.  Next release will see auto downloading of the URL and saving locally as well as File Upload (attachment) support!
 
 ## 2015-11-10
