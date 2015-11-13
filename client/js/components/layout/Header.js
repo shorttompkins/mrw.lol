@@ -24,6 +24,10 @@ class Header extends Component {
     this.refs.tag.value = ''
   }
 
+  addImage = () => {
+    history.pushState(null, '/image/add')
+  }
+
   inputEnter = (event) => {
     if (event.key === 'Enter') {
       this.tagSearch()
@@ -45,7 +49,7 @@ class Header extends Component {
             </button>
           </div>
           {(this.props.userid) ?
-            <button type="button" className="button add-button"><i className="fa fa-plus"></i> Add Image</button>
+            <button type="button" onClick={this.addImage} className="button add-button"><i className="fa fa-plus"></i> Add Image</button>
             : (<div></div>)
           }
         </div>

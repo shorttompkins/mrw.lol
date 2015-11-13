@@ -1,11 +1,13 @@
 body { font-family: Helvetica, Arial, sans-serif; font-size: 1em; }
 
 a { text-decoration: none; color: #404040; }
+button { outline: none; }
 
 .show { display: inherit; }
 .hide { display: none; }
 .float-right { float: right; }
 .float-left { float: left; }
+.clearfix { clear: both; }
 
 .page-header {
   position: relative;
@@ -99,6 +101,7 @@ a { text-decoration: none; color: #404040; }
     }
   }
 }
+
 
 .body {
   clear: both;

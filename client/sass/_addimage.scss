@@ -1,0 +1,56 @@
+
+fieldset {
+  padding: 15px;
+  margin-top: 10px; margin-bottom: 10px;
+  border-color: #e0e0e0;
+  legend {
+    padding: 5px 10px;
+  }
+  label {
+    display: inline-block;
+    width: 80px;
+  }
+  .input {
+    width: 50%;
+  }
+}
+
+.or-sep {
+  margin: 10px;
+}
+
+#tags {
+  position: relative;
+  min-height: 42px;
+  border: solid 1px #c0c0c0;
+  border-radius: 4px;
+  ul {
+    margin: 0;
+    padding: 4px;
+    line-height: 1em;
+    font-size: .9em;
+  }
+
+  .taggle_list .taggle {
+      padding: 5px 15px;
+  }
+
+  .taggle_list .taggle .close {
+      top: 3px;
+      right: 2px;
+  }
+
+  .taggle_list .taggle:hover {
+      padding: 5px;
+      padding-right: 22px;
+      padding-left: 8px;
+  }
+}
+.add-image {
+  .add-button {
+    width: 100%;
+    background-color: #33C133;
+    color: #ffffff;
+    font-weight: bold;
+  }
+}
