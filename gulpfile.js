@@ -16,7 +16,7 @@ gulp.task('copy', function() {
 })
 
 gulp.task('sass', function () {
-  gulp.src('client/sass/**/*.scss')
+  gulp.src('./client/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('server/public/mrw/'))
 })
