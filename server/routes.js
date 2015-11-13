@@ -41,6 +41,7 @@ module.exports.initialize = function(app, router) {
   router.get('/api/users/:userid/images', api.images.listByUserId)
   router.get('/api/users/:userid/images/:tag', api.images.listByUserIdTag)
 
+  router.post('/api/image', api.images.addImage)
 
   // SEED DATA:
   router.get('/api/seed', api.images.seed)

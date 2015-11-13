@@ -10,7 +10,7 @@ export default {
 
     request
       .get('/api/images')
-      .end(function(err, res){
+      .end((err, res) =>{
         if (err) {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_IMAGES_FAIL,
@@ -31,7 +31,7 @@ export default {
 
     request
       .get(`/api/images/${tag}`)
-      .end(function(err, res){
+      .end((err, res) =>{
         if (err) {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_IMAGES_BYTAG_FAIL,
@@ -95,7 +95,7 @@ export default {
 
     request
       .get(`/api/image/${filename}`)
-      .end(function(err, res){
+      .end((err, res) =>{
         if (err) {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_IMAGE_BYFILENAME_FAIL,
@@ -104,6 +104,28 @@ export default {
         } else {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_IMAGE_BYFILENAME_SUCCESS,
+            image: res.body
+          })
+        }
+      })
+  },
+  addImage(image) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.ADD_IMAGE
+    })
+
+    request
+      .post('/api/image/')
+      .send(image)
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.ADD_IMAGE_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.ADD_IMAGE_SUCCESS,
             image: res.body
           })
         }

@@ -3,7 +3,8 @@ let mongoose = require('mongoose'),
 
 let ImageSchema = new Schema({
   url:        String,
-  filename:   String
+  filename:   String,
+  uniqueid:   String
 })
 
 module.exports = mongoose.model('Image', ImageSchema)

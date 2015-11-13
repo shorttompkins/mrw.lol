@@ -1,6 +1,29 @@
 let Models = require('../../models'),
     ObjectId = require('mongoose').Types.ObjectId
 
+let add_user_image = function(tags, tag, image_id) {
+      let tagged = false
+      for(let t = 0; t < tags.length; t += 1) {
+        if (tags[t].name === tag) {
+          tagged = true
+          tags[t].images.push(image_id)
+        }
+      }
+      if (!tagged) {
+        tags.push({name: tag, images: [image_id]})
+      }
+    },
+    generateUniqueid = function() {
+      let length = 16,
+          charset = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+          retVal = ''
+
+      for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n))
+      }
+      return retVal
+    }
+
 module.exports = {
   list(req, res) {
     Models.Image.find({}, (err, images) => {
@@ -73,10 +96,41 @@ module.exports = {
     })
   },
 
+  getImageByUniqueId(req, res) {
+    Models.Image.findOne({uniqueid: req.params.uniqueid}, (err, image) => {
+      // to do: would be nice to append list of tags associated with this image
+      res.json(image)
+    })
+  },
+
   getImageByFilename(req, res) {
     Models.Image.findOne({filename: encodeURIComponent(req.params.filename.toLowerCase())}, (err, image) => {
       // to do: would be nice to append list of tags associated with this image
       res.json(image)
+    })
+  },
+
+  addImage(req, res) {
+    Models.User.findOne({ _id: req.session.user_id }, (err, user) => {
+      if (user) {
+        Models.Image.create({
+          url: req.body.url,
+          filename: req.body.url.substring(req.body.url.lastIndexOf('/')+1),
+          uniqueid: generateUniqueid()
+        }, (err, image) => {
+          req.body.tags.forEach(tag => {
+            add_user_image(user.tags, tag, image._id)
+          })
+
+          user.save((err) => {
+            if (err) {
+              res.status(500).json({ error: err.message })
+            } else {
+              res.json({ success: true })
+            }
+          })
+        })
+      }
     })
   },
 
@@ -89,18 +143,6 @@ module.exports = {
               image_count++
               if (image_count === 5) {
                 user.save()
-              }
-            },
-            add_user_image = function(tags, tag, image_id) {
-              let tagged = false
-              for(let t = 0; t < tags.length; t += 1) {
-                if (tags[t].name === tag) {
-                  tagged = true
-                  tags[t].images.push(image_id)
-                }
-              }
-              if (!tagged) {
-                tags.push({name: tag, images: [image_id]})
               }
             }
 
