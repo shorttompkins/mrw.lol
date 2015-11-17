@@ -1,5 +1,10 @@
 # CHANGE LOG
 
+## 2015-11-16
+- Include unique list of tags on the image details screen.  Each tag is linked to a tag search.
+- Include master list of all tags on the homepage. (Also linked to tag search.)
+- Updated the Mongoose Image model to include virtual for tags as well as a few helpful static methods (loadTags, generateUniqueId).
+
 ## 2015-11-12
 - You can now add an image!  For now it only works via URL, and even then just saves the URL to the db.  Next release will see auto downloading of the URL and saving locally as well as File Upload (attachment) support!
 
