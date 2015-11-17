@@ -1,24 +1,26 @@
 import React, { Component, PropTypes } from 'react'
 import connectToStores from '../../utils/connectToStores'
 import ImagesListStore from '../../stores/ImagesListStore'
+import TagsStore from '../../stores/TagsStore'
 import Card from './Card'
 
 class ImagesList extends Component {
   static propTypes = {
     images: PropTypes.array,
+    tags: PropTypes.array,
     params: PropTypes.object
   }
 
   static getStores() {
-    return [ImagesListStore]
+    return [ImagesListStore, TagsStore]
   }
 
   static getStateFromStores() {
-    return { images: ImagesListStore.getImages() }
+    return { images: ImagesListStore.getImages(), tags: TagsStore.getTags() }
   }
 
   render() {
-    if (!this.props.images) { return <img src="/public/images/loading.gif" /> }
+    if (!this.props.images.length) { return <img src="/public/images/loading.gif" /> }
 
     let images_list = this.props.images.map((image) => (
       <Card key={image._id} image={image} />
@@ -31,12 +33,18 @@ class ImagesList extends Component {
       )
     }
 
-    return (
-      <div className="images">
-        {title}
-        {images_list}
-      </div>
+    let tags = this.props.tags ? this.props.tags.map((tag) => (<a className="tag-link" href={`/images/${tag}`}><i className="fa fa-tag"></i> {tag}</a>)) : ''
 
+    return (
+      <div>
+        <div className="tags clearfix">
+          {tags}
+        </div>
+        <div className="images">
+          {title}
+          {images_list}
+        </div>        
+      </div>
     )
   }
 }

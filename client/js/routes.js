@@ -8,7 +8,10 @@ import AddImage from './components/images/AddImage'
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={ImagesList} onEnter={()=>{AppActions.loadImages()}}/>
+    <IndexRoute component={ImagesList} onEnter={()=>{
+      AppActions.loadImages()
+      AppActions.loadTags()
+    }}/>
     <Route path="images/:tag" component={ImagesList} onEnter={(location) => {
       AppActions.loadImagesByTag(location.params.tag)
     }} />

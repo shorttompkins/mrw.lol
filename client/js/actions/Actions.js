@@ -130,5 +130,26 @@ export default {
           })
         }
       })
+  },
+  loadTags() {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_TAGS
+    })
+
+    request
+      .get('/api/tags')
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_TAGS_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_TAGS_SUCCESS,
+            tags: res.body
+          })
+        }
+      })
   }
 }

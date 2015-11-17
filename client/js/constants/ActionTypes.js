@@ -23,5 +23,9 @@ export default keyMirror({
 
   NEW_POST_COMMENT: null,
   NEW_POST_COMMENT_SUCCESS: null,
-  NEW_POST_COMMENT_FAIL: null
+  NEW_POST_COMMENT_FAIL: null,
+
+  LOAD_TAGS: null,
+  LOAD_TAGS_SUCCESS: null,
+  LOAD_TAGS_FAIL: null
 })
