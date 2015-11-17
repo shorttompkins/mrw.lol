@@ -16,14 +16,17 @@ class Image extends Component {
   }
 
   render() {
-    if (!this.props.image) { return <img src="/public/images/loading.gif" /> }
+    if (!this.props.image.url) { return <img src="/public/images/loading.gif" /> }
 
-    let image = this.props.image
+    let image = this.props.image,
+        tags = image.tags.map((tag) => (<a className="tag-link" href={`/images/${tag}`}><i className="fa fa-tag"></i> {tag}</a>))
 
     return (
       <div className="image">
         <meta property="og:image" content={image.url} />
-        <img src={image.url} />
+        <img src={image.url} className="image-full"/>
+        <br/><br/>
+        {tags}
       </div>
 
     )
