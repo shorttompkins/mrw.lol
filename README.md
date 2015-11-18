@@ -103,7 +103,7 @@ Helpful utility commands:
  * `make db_connect` - to connect to the local MongoDB server via the Mongo shell
  * `make clean_exited` - to remove any old/stale exited Docker instances
 
- Note that you can also use Docker locally to run and build the web app - you just need [Docker Toolbox](http://docs.docker.com/mac/started/) installed!
+Note that you can also use Docker locally to run and build the web app - you just need [Docker Toolbox](http://docs.docker.com/mac/started/) installed!
 
 
 # CHANGE LOG
