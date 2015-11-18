@@ -37,7 +37,7 @@ class AddImage extends Component {
   render() {
     return (
       <div className="add-image">
-        <h1>Add a new Rection Image</h1>
+        <h1>Add a new Reaction Image</h1>
         <fieldset>
           <legend> Image File: </legend>
           <label>URL:</label> <input type="text" className="input" ref="url" /><br />
