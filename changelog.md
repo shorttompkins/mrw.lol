@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 2015-11-17
+- Moved meta og:image url tag to render on the server instead of the React client
+
 ## 2015-11-16
 - Include unique list of tags on the image details screen.  Each tag is linked to a tag search.
 - Include master list of all tags on the homepage. (Also linked to tag search.)
