@@ -23,7 +23,6 @@ class Image extends Component {
 
     return (
       <div className="image">
-        <meta property="og:image" content={image.url} />
         <img src={image.url} className="image-full"/>
         <br/><br/>
         {tags}

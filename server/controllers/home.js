@@ -1,3 +1,5 @@
+let Models = require('../models')
+
 module.exports = {
   index(req, res) {
     let loggedin = req.session.user_id || false
@@ -7,8 +9,14 @@ module.exports = {
       loggedin: loggedin,
       userid: req.session.user_id
     }
-
-    res.render('home', model)
+    if (req.params.imageid) {
+      Models.Image.findOne({uniqueid: req.params.imageid}, (err, image) => {
+        model.image = image
+        res.render('home', model)
+      })
+    } else {
+      res.render('home', model)
+    }
   }
 
 }

@@ -5,6 +5,7 @@ var controllers = require('./controllers'),
 module.exports.initialize = function(app, router) {
   // ** BASIC WEB PAGES **
   router.get('/about', controllers.about.index)
+  router.get('/image/:imageid', controllers.home.index)
 
   // ** AUTHENTICATION **
   function authHandler(req, res) {
