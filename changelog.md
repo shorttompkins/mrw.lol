@@ -2,6 +2,8 @@
 
 ## 2015-11-17
 - Moved meta og:image url tag to render on the server instead of the React client
+- Fixed broken `make db_connect`
+- Updated README
 
 ## 2015-11-16
 - Include unique list of tags on the image details screen.  Each tag is linked to a tag search.
