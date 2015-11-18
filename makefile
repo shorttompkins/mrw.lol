@@ -1,7 +1,7 @@
 PWD=`pwd`
 
 build_node:
-	docker build --no-cache -t mrw.node .
+	docker build -t mrw.node .
 
 run_mongodb:
 	docker run \

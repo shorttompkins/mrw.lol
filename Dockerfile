@@ -1,20 +1,13 @@
 FROM node:4.2.2
-COPY . /var/www
 WORKDIR /var/www
- 
-# RUN apt-get update
-# RUN apt-get install -y libkrb5-dev
 
 RUN npm install -g gulp --loglevel error
 
-# Create a nonroot user, and switch to it
-# RUN /usr/sbin/useradd --create-home --home-dir /usr/local/nonroot --shell /bin/bash nonroot
-# RUN chown -R nonroot /var/www
-# USER nonroot
+# cache the npm install process separately
+ADD package.json /var/www/package.json
+RUN npm install
 
-# Set the HOME var, npm install gets angry if it can't write to the HOME dir,
-# which will be /root at this point
-# ENV HOME /usr/local/nonroot
+ADD . /var/www
 
 EXPOSE 3500
 ENV NODE_ENV=prod
