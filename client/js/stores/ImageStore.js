@@ -1,13 +1,20 @@
 import baseStore from '../utils/baseStore'
 import ActionTypes from '../constants/ActionTypes.js'
 
-let _image = {}, uploading = false
+let _image = {}, uploading = ''
+
+const _resetStatus = () => {
+  setTimeout(() => {
+    uploading = ''
+    ImageStore.emitChange()
+  }, 2000)
+}
 
 let ImageStore = baseStore({
   getImage() {
     return _image
   },
-  
+
   isUploading() {
     return uploading
   }
@@ -24,13 +31,18 @@ ImageStore.dispatchHandler = (payload) => {
       ImageStore.emitChange()
       break
     case ActionTypes.ADD_IMAGE:
-      uploading = true
+      uploading = 'LOADING'
       ImageStore.emitChange()
       break
     case ActionTypes.ADD_IMAGE_SUCCESS:
-    case ActionTypes.ADD_IMAGE_FAIL:
-      uploading = false
+      uploading = 'OK'
       ImageStore.emitChange()
+      _resetStatus()
+      break
+    case ActionTypes.ADD_IMAGE_FAIL:
+      uploading = 'FAIL'
+      ImageStore.emitChange()
+      _resetStatus()
       break
   }
 }

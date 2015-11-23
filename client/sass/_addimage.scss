@@ -11,7 +11,7 @@ fieldset {
     width: 80px;
   }
   .input {
-    width: 50%;
+    width: 75%;
   }
 }
 
@@ -45,12 +45,25 @@ fieldset {
       padding-right: 22px;
       padding-left: 8px;
   }
+
 }
 .add-image {
+  width: 49%;
+  float: left;
   .add-button {
     width: 100%;
     background-color: #33C133;
     color: #ffffff;
     font-weight: bold;
+    border: none;
+  }
+}
+
+.preview-image {
+  width: 50%;
+  margin-left: 51%;
+  img {
+    width: 100%;
+    margin: auto auto;
   }
 }

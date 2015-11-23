@@ -37,12 +37,12 @@ class ImagesList extends Component {
 
     return (
       <div>
-        <div className="tags clearfix">
-          {tags}
-        </div>
         <div className="images">
           {title}
           {images_list}
+        </div>
+        <div className="tags clearfix">
+          {tags}
         </div>
       </div>
     )
