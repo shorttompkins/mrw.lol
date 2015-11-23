@@ -1,7 +1,7 @@
 # CHANGE LOG
-
 ## 2015-11-23
 - Added live preview on Add Image screen, improved visual indicators of upload status (i.e. loading spinner, success checkmark and failure x)
+- Quick Add existing images - just goto image details and hit the `+ Add` button to add an existing image with your own tags!
 
 ## 2015-11-22
 - Added support for file uploads!
