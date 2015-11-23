@@ -42,6 +42,7 @@ class ImagesList extends Component {
           {images_list}
         </div>
         <div className="tags clearfix">
+          <h3>Tags:</h3>
           {tags}
         </div>
       </div>

@@ -8,7 +8,9 @@ const Card = ({image}) => {
   return (
     <span key={image._id}>
       <Link to={`/image/${image.uniqueid}`}>
-        <div className="image-card" style={styles}></div>
+        <div className="image-card" style={styles}>
+          <i className="fa fa-search-plus"></i>
+        </div>
       </Link>
     </span>
   )

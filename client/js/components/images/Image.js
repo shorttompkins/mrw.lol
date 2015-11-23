@@ -24,7 +24,11 @@ class Image extends Component {
     return (
       <div className="image">
         <img src={image.web_url} className="image-full"/>
+        <br/>Filename: {image.filename.substring(image.uniqueid.length+1)}
+        <br/>
+        UniqueID: {image.uniqueid}
         <br/><br/>
+        <h3>Tags:</h3>
         {tags}
       </div>
 
