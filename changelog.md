@@ -1,5 +1,11 @@
 # CHANGE LOG
 
+## 2015-11-22
+- Added support for file uploads!
+- Additionally, when a URL is used for an image, that image is downloaded automatically by the server and stored (like a file upload)
+- Tweaked the Docker stuff so it caches better
+- Included volume mount for Docker so that the `public/upload` is saved on the server and not lost between Docker instances.
+
 ## 2015-11-17
 - Moved meta og:image url tag to render on the server instead of the React client
 - Fixed broken `make db_connect`
