@@ -61,6 +61,7 @@ button { outline: none; }
       cursor: pointer;
     }
     .login-popup {
+      z-index: 5;
       text-align: left;
       position: absolute;
       top: 65px;
