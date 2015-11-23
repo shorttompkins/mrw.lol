@@ -7,6 +7,7 @@ import Taggle from 'taggle'
 class AddImage extends Component {
   static propTypes = {
     params: PropTypes.object,
+    image: PropTypes.object,
     uploading: PropTypes.string
   }
 
@@ -15,7 +16,7 @@ class AddImage extends Component {
   }
 
   static getStateFromStores() {
-    return { uploading: ImageStore.isUploading() }
+    return { uploading: ImageStore.isUploading(), image: ImageStore.getImage() }
   }
 
   componentDidMount() {
@@ -40,7 +41,11 @@ class AddImage extends Component {
     e.preventDefault()
 
     let data = new FormData()
-    if (this.refs.file.files.length) {
+    if (this.props.image.uniqueid) {
+      data.append('_id', this.props.image._id)
+      data.append('uniqueid', this.props.image.uniqueid)
+    }
+    else if (this.refs.file.files.length) {
       data.append('file', this.refs.file.files[0])
     } else {
       data.append('url', this.refs.url.value)
@@ -52,7 +57,7 @@ class AddImage extends Component {
   }
 
   render() {
-    let indicator
+    let indicator, { image } = this.props
     switch(this.props.uploading) {
       case 'LOADING':
         indicator = <i className="fa fa-refresh fa-spin"></i>
@@ -64,16 +69,31 @@ class AddImage extends Component {
         indicator = <i className="fa fa-times-circle-o"></i>
         break
     }
+
+    let upload_fieldset
+    if (image.uniqueid) {
+      upload_fieldset = (
+        <fieldset>
+          <legend> Image File: </legend>
+          <label>UniqueID:</label> {image.uniqueid}
+        </fieldset>
+      )
+    } else {
+      upload_fieldset = (
+        <fieldset>
+          <legend> Image File: </legend>
+          <label>Upload:</label> <input type="file" ref="file" onChange={this.previewImage} /><br />
+          <div className="or-sep"> - or - </div>
+          <label>URL:</label> <input type="text" className="input" ref="url" />
+        </fieldset>
+      )
+    }
+
     return (
       <div>
         <h1>Add a new Reaction Image</h1>
         <form onSubmit={this.addImage} className="add-image" encType="multipart/form-data">
-          <fieldset>
-            <legend> Image File: </legend>
-            <label>Upload:</label> <input type="file" ref="file" onChange={this.previewImage} /><br />
-            <div className="or-sep"> - or - </div>
-            <label>URL:</label> <input type="text" className="input" ref="url" />
-          </fieldset>
+          {upload_fieldset}
 
           <fieldset>
             <legend> Associated Tags: </legend>
@@ -87,7 +107,7 @@ class AddImage extends Component {
         <div className="preview-image">
           <fieldset>
             <legend>Preview</legend>
-            <img ref="preview" />
+            <img ref="preview" src={image.web_url ? image.web_url : ''}/>
           </fieldset>
         </div>
       </div>

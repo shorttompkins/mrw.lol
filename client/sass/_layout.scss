@@ -46,12 +46,9 @@ button { outline: none; }
       }
     }
     .add-button {
-      background-color: #33C133;
-      color: #fff;
       position: absolute;
       right: 10px;
       top: 0px;
-      border: none;
     }
   }
   .login-links {
@@ -102,6 +99,18 @@ button { outline: none; }
   }
 }
 
+.add-button {
+  background-color: #33C133;
+  color: #fff;
+  border: none;
+  &.right {
+    float: right;
+  }
+  &.left {
+    float: left;
+    margin-right: 10px;
+  }
+}
 
 .body {
   clear: both;

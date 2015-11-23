@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import connectToStores from '../../utils/connectToStores'
 import ImageStore from '../../stores/ImageStore'
+import { Link } from 'react-router'
 
 class Image extends Component {
   static propTypes = {
@@ -24,10 +25,14 @@ class Image extends Component {
     return (
       <div className="image">
         <img src={image.web_url} className="image-full"/>
-        <br/>Filename: {image.filename.substring(image.uniqueid.length+1)}
-        <br/>
-        UniqueID: {image.uniqueid}
-        <br/><br/>
+
+        <div>
+          <Link to={`/image/add/${image.uniqueid}`} className="button add-button left"><i className="fa fa-plus"></i> Add</Link>
+          Filename: {image.filename.substring(image.uniqueid.length+1)}
+          <br/>
+          UniqueID: {image.uniqueid}
+          <br/><br/>
+        </div>
         <h3>Tags:</h3>
         {tags}
       </div>

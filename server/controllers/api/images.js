@@ -142,7 +142,20 @@ module.exports = {
 
         let filename, file_url
 
-        if (req.body.url) {
+        if (req.body.uniqueid) {
+          // reuse existing image:
+          req.body.tags.split(',').forEach(tag => {
+            add_user_image(user.tags, tag, req.body._id)
+          })
+
+          user.save((err) => {
+            if (err) {
+              res.status(500).json({ error: err.message })
+            } else {
+              res.json({ success: true })
+            }
+          })
+        } else if (req.body.url) {
           // download the file:
           filename = req.body.url.substring(req.body.url.lastIndexOf('/')+1)
           file_url = req.body.url.replace('https://', 'http://')
