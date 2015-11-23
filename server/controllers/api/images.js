@@ -89,9 +89,13 @@ module.exports = {
 
   getImageByUniqueId(req, res) {
     Models.Image.findOne({uniqueid: req.params.uniqueid}, (err, image) => {
-      Models.Image.getTags(image, () => {
-        res.json(image)
-      })
+      if (image) {
+        Models.Image.getTags(image, () => {
+          res.json(image)
+        })
+      } else {
+        res.status(404).json({});
+      }
     })
   },
 
