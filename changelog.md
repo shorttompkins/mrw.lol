@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 2015-11-23
+- Added live preview on Add Image screen, improved visual indicators of upload status (i.e. loading spinner, success checkmark and failure x)
+
 ## 2015-11-22
 - Added support for file uploads!
 - Additionally, when a URL is used for an image, that image is downloaded automatically by the server and stored (like a file upload)
