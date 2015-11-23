@@ -1,6 +1,8 @@
 var controllers = require('./controllers'),
     api = require('./controllers/api'),
-    auth = require('./controllers/auth.js')
+    auth = require('./controllers/auth.js'),
+    path = require('path'),
+    upload = require('./middleware').multer({ dest: path.join(__dirname, './public/upload/temp')})
 
 module.exports.initialize = function(app, router) {
   // ** BASIC WEB PAGES **
@@ -44,7 +46,10 @@ module.exports.initialize = function(app, router) {
 
   router.get('/api/tags', api.users.getTags)
 
-  router.post('/api/image', api.images.addImage)
+  //router.post('/api/image', api.images.addImage)
+  router.post('/api/image', upload.single('file'), api.images.addImage)
+
+
 
   // SEED DATA:
   router.get('/api/seed', api.images.seed)

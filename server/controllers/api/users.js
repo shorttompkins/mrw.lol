@@ -8,7 +8,11 @@ module.exports = {
       { $sort: { 'tags.name': -1 } },
       { $group: { '_id': '1', 'tags': { $addToSet: '$tags.name' } } }
     ], (err, tags) => {
-      res.json(tags[0].tags)
+      if (tags.length) {
+        res.json(tags[0].tags)
+      } else {
+        res.json([])
+      }
     })
   }
 }

@@ -3,4 +3,6 @@
     "mongodb": {
       "db": "mrw-lol"
     }
+    },
+    "image_root_url": "http://mrw.lol/public/upload/"
 }

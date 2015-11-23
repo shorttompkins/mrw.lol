@@ -8,6 +8,7 @@ ADD package.json /var/www/package.json
 RUN npm install
 
 ADD . /var/www
+VOLUME /var/www/server/public/upload
 
 EXPOSE 3500
 ENV NODE_ENV=prod

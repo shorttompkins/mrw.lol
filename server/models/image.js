@@ -1,5 +1,7 @@
 let mongoose = require('mongoose'),
-    Schema = mongoose.Schema
+    Schema = mongoose.Schema,
+    path = require('path'),
+    config = require(path.join(__dirname, `../config/config.${process.env.NODE_ENV || 'dev'}.json`))
 
 let ImageSchema = new Schema({
   url:        String,
@@ -8,10 +10,15 @@ let ImageSchema = new Schema({
 }, { toJSON: { virtuals: true } })
 
 ImageSchema.virtual('tags')
-  .set((tags) => {
+  .set(function(tags) {
     this._tags = tags
   })
-  .get(() => this._tags)
+  .get(function() { return this._tags })
+
+ImageSchema.virtual('web_url')
+  .get(function() {
+    return `${config.image_root_url}${this.url}`
+  })
 
 ImageSchema.statics.generateUniqueId = function() {
   let length = 16,

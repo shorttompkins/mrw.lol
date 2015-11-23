@@ -6,7 +6,7 @@ build_node:
 run_mongodb:
 	docker run \
 	--name mrw.mongodb \
-	-v '$PWD'/data:/data/db \
+	-v '$$PWD'/data:/data/db \
 	-d \
 	mongo:latest
 
@@ -14,6 +14,7 @@ run_app:
 	docker run \
 	-d \
 	-p 80:3500 \
+	-v '$$PWD'/server/public/upload:/var/www/server/public/upload \
 	--name mrw.app \
 	--link mrw.mongodb:mongo \
 	mrw.node \
@@ -31,6 +32,7 @@ bash_app:
 	docker run \
 	-it \
 	--rm \
+	-v '$$PWD'/server/public/upload:/var/www/server/public/upload \
 	-p 80:3500 \
 	--name mrw.app \
 	--link mrw.mongodb:mongo \
@@ -38,4 +40,4 @@ bash_app:
 	/bin/bash
 
 clean_exited:
-	docker ps -a | grep Exited | awk '{print $1}' | xargs docker rm
+	docker ps -a | grep Exited | awk '{print $$1}' | xargs docker rm
