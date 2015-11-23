@@ -7,7 +7,8 @@ import Taggle from 'taggle'
 class AddImage extends Component {
   static propTypes = {
     images: PropTypes.array,
-    params: PropTypes.object
+    params: PropTypes.object,
+    uploading: PropTypes.bool
   }
 
   static getStores() {
@@ -15,7 +16,7 @@ class AddImage extends Component {
   }
 
   static getStateFromStores() {
-    return { }
+    return { uploading: ImageStore.isUploading() }
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ class AddImage extends Component {
           <div id="tags" ref="tags" className="clearfix"></div>
         </fieldset>
 
-        <button type="submit" className="button add-button">Add Image</button>
+        <button type="submit" className="button add-button">Add Image { this.props.uploading ? <img src="/public/images/loading.gif" /> : ''}</button>
       </form>
     )
   }

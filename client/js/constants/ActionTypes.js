@@ -27,5 +27,9 @@ export default keyMirror({
 
   LOAD_TAGS: null,
   LOAD_TAGS_SUCCESS: null,
-  LOAD_TAGS_FAIL: null
+  LOAD_TAGS_FAIL: null,
+
+  ADD_IMAGE: null,
+  ADD_IMAGE_SUCCESS: null,
+  ADD_IMAGE_FAIL: null
 })
