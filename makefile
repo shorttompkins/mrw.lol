@@ -10,6 +10,13 @@ run_mongodb:
 	-d \
 	mongo:latest
 
+run_mongodb_local:
+	docker run \
+	--name mrw.mongodb \
+	-d \
+	-p 27017:27017 \
+	mongo
+
 run_app:
 	docker run \
 	-d \

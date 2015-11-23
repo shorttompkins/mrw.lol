@@ -34,13 +34,13 @@ Before you can seed data, you need a valid user account.  The easiest way to get
 
 *Second Important Note:* your local `server/config/auth.js` file will need to be updated with **your** social network API key/values.
 
-Once you've logged in at least once, point your browser to `http://localhost:3500/api/seed` to populate the database with some sample data.
+Once you've logged in at least once, point your browser to `http://localhost:3500/api/seed` to populate the database with some sample images.
 
 # Global Dependencies
 
 Node.js 4.x is required.
 
-MongoDB is required, although not required to be installed locally.  Edit `server/config/config.env.json` to update the host connection string for your MongoDB instance (if its at MongoLab, for example).  _See the Docker section below if you'd rather use Docker to run containers locally for Node and MongoDB._
+MongoDB is required, although not required to be installed locally.  Edit `server/config/config.env.json` to update the host connection string for your MongoDB instance (if its at MongoLab, for example).  _See the Docker section below if you'd rather use Docker to run containers locally for Node and/or MongoDB._
 
 # Server
 
@@ -100,10 +100,36 @@ The project has been setup to be easily deployed using Docker.  Simple make comm
 Helpful utility commands:
 
  * `make bash_app` - for bash shell into the node app to run manually (for debugging)
- * `make db_connect` - to connect to the local MongoDB server via the Mongo shell
+ * `make run_mongodb_local` - for running a local instance of MongoDB (development)
+ * `make db_connect` - to connect to the MongoDB server via the Mongo shell
  * `make clean_exited` - to remove any old/stale exited Docker instances
 
+## Docker for Local development
+
 Note that you can also use Docker locally to run and build the web app - you just need [Docker Toolbox](http://docs.docker.com/mac/started/) installed!
+
+In order for the app to point to your local instance of MongoDB, you need to change the `config/config.dev.json` file accordingly:
+
+```json
+  "host": "mongodb://192.168.99.100:27017/"
+```
+
+Where the IP address used is that of your docker-machine VM.  Then simply run the local MongoDB container and launch the web server locally:
+
+```bash
+$ make run_mongodb_local
+$ npm start
+```
+
+If you don't want to even run the web server locally, you could instead:
+
+```bash
+$ make build_node
+$ make run_app
+$ open http://192.168.99.100
+```
+
+A good tip would be to edit your `/etc/hosts` file and insert `192.168.99.100 mrw.lol` so that you can just point your browser to `http://mrw.lol` (and this way your local copies of `config/auth.js` will register.)
 
 
 # CHANGE LOG
