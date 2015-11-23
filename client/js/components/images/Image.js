@@ -19,11 +19,11 @@ class Image extends Component {
     if (!this.props.image.url) { return <img src="/public/images/loading.gif" /> }
 
     let image = this.props.image,
-        tags = image.tags.map((tag) => (<a className="tag-link" href={`/images/${tag}`}><i className="fa fa-tag"></i> {tag}</a>))
+        tags = image.tags.map((tag, index) => (<a className="tag-link" href={`/images/${tag}`} key={index}><i className="fa fa-tag"></i> {tag}</a>))
 
     return (
       <div className="image">
-        <img src={image.url} className="image-full"/>
+        <img src={image.web_url} className="image-full"/>
         <br/><br/>
         {tags}
       </div>

@@ -104,25 +104,65 @@ module.exports = {
   },
 
   addImage(req, res) {
+    const http = require('http'),
+        fs = require('fs'),
+        path = require('path')
+
+    let uniqueid = Models.Image.generateUniqueId()
+
     Models.User.findOne({ _id: req.session.user_id }, (err, user) => {
       if (user) {
-        Models.Image.create({
-          url: req.body.url,
-          filename: req.body.url.substring(req.body.url.lastIndexOf('/')+1),
-          uniqueid: Models.Image.generateUniqueId()
-        }, (err, image) => {
-          req.body.tags.forEach(tag => {
-            add_user_image(user.tags, tag, image._id)
+        const save_image = function(err) {
+          if (!err) {
+            Models.Image.create({
+              url: filename,
+              filename: filename,
+              uniqueid: uniqueid
+            }, (err, image) => {
+              req.body.tags.split(',').forEach(tag => {
+                add_user_image(user.tags, tag, image._id)
+              })
+
+              user.save((err) => {
+                if (err) {
+                  res.status(500).json({ error: err.message })
+                } else {
+                  res.json({ success: true })
+                }
+              })
+            })
+          } else {
+            res.status(500).json({ error: 'File upload failed.'})
+          }
+        }
+
+        let filename, file_url
+
+        if (req.body.url) {
+          // download the file:
+          filename = req.body.url.substring(req.body.url.lastIndexOf('/')+1)
+          file_url = req.body.url.replace('https://', 'http://')
+
+          let file = fs.createWriteStream(path.join(__dirname, `../../public/upload/${uniqueid}_${filename}`))
+
+          http.get(file_url, (response) => {
+            response.pipe(file)
+            file.on('finish', function() {
+              file.close(save_image)  // should fire callback here to be sure
+            })
           })
 
-          user.save((err) => {
-            if (err) {
-              res.status(500).json({ error: err.message })
-            } else {
-              res.json({ success: true })
-            }
-          })
-        })
+        } else {
+          file_url = req.file.filename
+          filename = `${uniqueid}_${req.file.originalname}`
+          // move the file:
+          fs.rename(path.join(__dirname, `../../public/upload/temp/${req.file.filename}`),
+            path.join(__dirname, `../../public/upload/${uniqueid}_${req.file.originalname}`),
+            save_image
+          )
+        }
+      } else {
+        res.status(500).json({ error: 'User not logged in.'})
       }
     })
   },

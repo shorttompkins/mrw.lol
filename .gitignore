@@ -13,6 +13,7 @@ npm-debug.log
 #Compiled sources
 build
 server/public/mrw
+server/public/upload
 
 #Secret stuff
 server/config/auth.js

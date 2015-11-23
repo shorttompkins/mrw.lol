@@ -4,8 +4,6 @@ import ImageStore from '../../stores/ImageStore'
 import Actions from '../../actions/Actions'
 import Taggle from 'taggle'
 
-let tags
-
 class AddImage extends Component {
   static propTypes = {
     images: PropTypes.array,
@@ -26,23 +24,31 @@ class AddImage extends Component {
     })
   }
 
-  addImage = () => {
-    let new_image = {
-      url: this.refs.url.value || this.refs.file.value,
-      tags: this.state.tags.getTags().values
+  addImage = (e) => {
+    e.preventDefault()
+
+    let data = new FormData()
+    if (this.refs.file.files.length) {
+      data.append('file', this.refs.file.files[0])
+    } else {
+      data.append('url', this.refs.url.value)
     }
-    Actions.addImage(new_image)
+
+    data.append('tags', this.state.tags.getTags().values)
+
+    Actions.addImage(data)
   }
 
   render() {
     return (
-      <div className="add-image">
+      <form onSubmit={this.addImage}  className="add-image" encType="multipart/form-data">
         <h1>Add a new Reaction Image</h1>
+
         <fieldset>
           <legend> Image File: </legend>
           <label>URL:</label> <input type="text" className="input" ref="url" /><br />
           <div className="or-sep"> - or - </div>
-          <label>Upload:</label> <input type="file" ref="file" /><br />
+          <label>Upload:</label> <input type="file" ref="file" onChange={this.handleFile} /><br />
         </fieldset>
 
         <fieldset>
@@ -50,9 +56,8 @@ class AddImage extends Component {
           <div id="tags" ref="tags" className="clearfix"></div>
         </fieldset>
 
-        <button type="button" onClick={this.addImage} className="button add-button">Add Image</button>
-      </div>
-
+        <button type="submit" className="button add-button">Add Image</button>
+      </form>
     )
   }
 }

@@ -33,7 +33,7 @@ class ImagesList extends Component {
       )
     }
 
-    let tags = this.props.tags ? this.props.tags.map((tag) => (<a className="tag-link" href={`/images/${tag}`}><i className="fa fa-tag"></i> {tag}</a>)) : ''
+    let tags = this.props.tags ? this.props.tags.map((tag, index) => (<a className="tag-link" href={`/images/${tag}`} key={index}><i className="fa fa-tag"></i> {tag}</a>)) : ''
 
     return (
       <div>
@@ -43,7 +43,7 @@ class ImagesList extends Component {
         <div className="images">
           {title}
           {images_list}
-        </div>        
+        </div>
       </div>
     )
   }
