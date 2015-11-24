@@ -7,7 +7,11 @@ import Image from './components/images/Image'
 import AddImage from './components/images/AddImage'
 
 export default (
-  <Route path="/" component={App}>
+  <Route path="/" component={App} onEnter={() => {
+    if (window.userid) {
+      AppActions.getUserById(window.userid)
+    }
+  }}>
     <IndexRoute component={ImagesList} onEnter={()=>{
       AppActions.loadImages()
       AppActions.loadTags()

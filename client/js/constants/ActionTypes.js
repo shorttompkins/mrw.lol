@@ -17,21 +17,20 @@ export default keyMirror({
   LOAD_IMAGE_BYFILENAME_SUCCESS: null,
   LOAD_IMAGE_BYFILENAME_FAIL: null,
 
-  LOAD_POST_COMMENTS: null,
-  LOAD_POST_COMMENTS_SUCCESS: null,
-  LOAD_POST_COMMENTS_FAIL: null,
-
-  NEW_POST_COMMENT: null,
-  NEW_POST_COMMENT_SUCCESS: null,
-  NEW_POST_COMMENT_FAIL: null,
-
-  LOAD_TAGS: null,
-  LOAD_TAGS_SUCCESS: null,
-  LOAD_TAGS_FAIL: null,
-
   ADD_IMAGE: null,
   ADD_IMAGE_SUCCESS: null,
   ADD_IMAGE_FAIL: null,
 
-  RESET_IMAGE: null
+  RESET_IMAGE: null,
+
+
+
+  // USERS:
+  LOAD_USER: null,
+  LOAD_USER_SUCCESS: null,
+  LOAD_USER_FAIL: null,
+  
+  LOAD_TAGS: null,
+  LOAD_TAGS_SUCCESS: null,
+  LOAD_TAGS_FAIL: null
 })
