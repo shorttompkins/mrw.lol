@@ -38,12 +38,12 @@ let handler = (accessToken, refreshToken, profile, done) => {
         name: profile.displayName,
         email: email,
         display: '',
+        avatar: avatar,
         social: {
           network_id: profile.id,
           provider: profile.provider,
           unique_val: unique_val,
-          access_token: accessToken,
-          avatar: avatar
+          access_token: accessToken
         }
       },
       options = { upsert: true }

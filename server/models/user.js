@@ -12,13 +12,12 @@ let UserSchema = new Schema({
   timestamp:    { type: Date, default: Date.now },
   display:      String,
   email:        String,
-  // TO DO: need a unique display name for the site itself
+  avatar:       String,
   social:       {
     network_id:   String,
     provider:     String,
     unique_val:   String,
-    access_token: String,
-    avatar:       String
+    access_token: String
   },
   tags:         [UserTagSchema]
 })
