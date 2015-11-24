@@ -15,7 +15,9 @@ export default (
     <Route path="images/:tag" component={ImagesList} onEnter={(location) => {
       AppActions.loadImagesByTag(location.params.tag)
     }} />
-    <Route path="image/add" component={AddImage} />
+    <Route path="image/add" component={AddImage} onEnter={() => {
+      AppActions.resetImage()
+    }}/>
     <Route path="image/add/:id" component={AddImage} onEnter={(location) => {
       AppActions.loadImageByUniqueId(location.params.id)
     }} />

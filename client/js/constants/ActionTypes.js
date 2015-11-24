@@ -31,5 +31,7 @@ export default keyMirror({
 
   ADD_IMAGE: null,
   ADD_IMAGE_SUCCESS: null,
-  ADD_IMAGE_FAIL: null
+  ADD_IMAGE_FAIL: null,
+
+  RESET_IMAGE: null
 })

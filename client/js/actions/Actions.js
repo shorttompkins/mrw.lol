@@ -131,6 +131,11 @@ export default {
         }
       })
   },
+  resetImage() {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.RESET_IMAGE
+    })
+  },
   loadTags() {
     AppDispatcher.dispatch({
       actionType: ActionTypes.LOAD_TAGS

@@ -44,6 +44,10 @@ ImageStore.dispatchHandler = (payload) => {
       ImageStore.emitChange()
       _resetStatus()
       break
+    case ActionTypes.RESET_IMAGE:
+      _image = {}
+      ImageStore.emitChange()
+      break
   }
 }
 
