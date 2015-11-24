@@ -3,6 +3,7 @@ import connectToStores from '../../utils/connectToStores'
 import ImagesListStore from '../../stores/ImagesListStore'
 import TagsStore from '../../stores/TagsStore'
 import Card from './Card'
+import {Link} from 'react-router'
 
 class ImagesList extends Component {
   static propTypes = {
@@ -20,7 +21,7 @@ class ImagesList extends Component {
   }
 
   render() {
-    if (!this.props.images.length) { return <img src="/public/images/loading.gif" /> }
+    if (!this.props.images.length) { return <i className="fa fa-refresh fa-spin"></i> }
 
     let images_list = this.props.images.map((image) => (
       <Card key={image._id} image={image} />
@@ -29,11 +30,15 @@ class ImagesList extends Component {
     let title = ''
     if (this.props.params.tag) {
       title = (
-        <h1>{this.props.params.tag}</h1>
+        <h1>Tag: {this.props.params.tag}</h1>
       )
     }
 
-    let tags = this.props.tags ? this.props.tags.map((tag, index) => (<a className="tag-link" href={`/images/${tag}`} key={index}><i className="fa fa-tag"></i> {tag}</a>)) : ''
+    let tags = this.props.tags ? this.props.tags.map((tag, index) => (
+      <Link className="tag-link" to={`/images/${tag}`} key={index}>
+        <i className="fa fa-tag"></i> {tag}
+      </Link>
+    )) : ''
 
     return (
       <div>
@@ -41,10 +46,12 @@ class ImagesList extends Component {
           {title}
           {images_list}
         </div>
+        { !title ? (
         <div className="tags clearfix">
           <h3>Tags:</h3>
           {tags}
         </div>
+      ) : ''}
       </div>
     )
   }

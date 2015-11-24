@@ -17,17 +17,23 @@ class Image extends Component {
   }
 
   render() {
-    if (!this.props.image.url) { return <img src="/public/images/loading.gif" /> }
+    if (!this.props.image.url) { return <i className="fa fa-refresh fa-spin"></i> }
 
     let image = this.props.image,
-        tags = image.tags.map((tag, index) => (<a className="tag-link" href={`/images/${tag}`} key={index}><i className="fa fa-tag"></i> {tag}</a>))
+        tags = image.tags.map((tag, index) => (
+          <Link className="tag-link" to={`/images/${tag}`} key={index}>
+            <i className="fa fa-tag"></i> {tag}
+          </Link>
+        ))
 
     return (
       <div className="image">
         <img src={image.web_url} className="image-full"/>
 
         <div>
-          <Link to={`/image/add/${image.uniqueid}`} className="button add-button left"><i className="fa fa-plus"></i> Add</Link>
+          <Link to={`/image/add/${image.uniqueid}`} className="button add-button left">
+            <i className="fa fa-plus"></i> Add
+          </Link>
           Filename: {image.filename.substring(image.uniqueid.length+1)}
           <br/>
           UniqueID: {image.uniqueid}
