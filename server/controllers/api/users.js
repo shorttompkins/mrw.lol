@@ -1,6 +1,11 @@
 let Models = require('../../models')
 
 module.exports = {
+  getUserById(req, res) {
+    Models.User.findOne({_id: req.session.user_id}, (err, user) => {
+      res.json(user)
+    })
+  },
   getTags(req, res) {
     Models.User.aggregate([
       { $unwind: '$tags' },
