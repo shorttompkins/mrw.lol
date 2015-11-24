@@ -17,7 +17,7 @@ class Login extends Component {
 
     return (
       <div className="login-links">
-        <a onClick={this.showPopup}>Login | Register</a>
+        <a className="login" onClick={this.showPopup}>Login | Register</a>
 
         <div className={class_names.join(' ')}>
           <p>Easily login using any of the social networks below...</p>

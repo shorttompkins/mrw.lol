@@ -7,7 +7,7 @@ import { Link } from 'react-router'
 class Image extends Component {
   static propTypes = {
     image: PropTypes.object,
-    userid: PropTypes.string
+    user: PropTypes.object
   }
 
   static getStores() {
@@ -15,7 +15,7 @@ class Image extends Component {
   }
 
   static getStateFromStores() {
-    return { image: ImageStore.getImage(), userid: UserStore.getUserid() }
+    return { image: ImageStore.getImage(), user: UserStore.getUser() }
   }
 
   render() {
@@ -33,7 +33,7 @@ class Image extends Component {
         <img src={image.web_url} className="image-full"/>
 
         <div>
-          { this.props.userid ? (
+          { this.props.user._id ? (
               <Link to={`/image/add/${image.uniqueid}`} className="button add-button left">
                 <i className="fa fa-plus"></i> Add
               </Link>

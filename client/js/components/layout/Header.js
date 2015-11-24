@@ -8,7 +8,7 @@ import UserStore from '../../stores/UserStore'
 
 class Header extends Component {
   static propTypes = {
-    userid: PropTypes.string
+    user: PropTypes.object
   }
 
   static getStores() {
@@ -16,7 +16,7 @@ class Header extends Component {
   }
 
   static getStateFromStores() {
-    return { userid: UserStore.getUserid() }
+    return { user: UserStore.getUser() }
   }
 
   tagSearch = () => {
@@ -35,6 +35,7 @@ class Header extends Component {
   }
 
   render() {
+    const { user } = this.props
     return (
       <div className="page-header">
         <h1>
@@ -48,13 +49,13 @@ class Header extends Component {
               <i className="fa fa-search"></i>
             </button>
           </div>
-          {(this.props.userid) ?
+          {(user._id) ?
             <button type="button" onClick={this.addImage} className="button add-button"><i className="fa fa-plus"></i> Add Image</button>
             : (<div></div>)
           }
         </div>
 
-        {(this.props.userid) ? <Logout /> : <Login />}
+        {user._id ? <Logout user={user} /> : <Login />}
       </div>
     )
   }
