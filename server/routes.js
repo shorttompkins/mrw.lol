@@ -12,6 +12,8 @@ module.exports.initialize = function(app, router) {
   // ** AUTHENTICATION **
   function authHandler(req, res) {
     req.session.user_id = req.user._id
+    const hour = 3600000
+    req.session.cookie.maxAge = 14 * 24 * hour
     res.redirect('/')
   }
   router.get('/auth/twitter', auth('twitter').authenticate('twitter'))
