@@ -9,29 +9,35 @@ let passport = require('passport'),
     }
 
 let handler = (accessToken, refreshToken, profile, done) => {
-  let unique_val, avatar = ''
-  
+  let unique_val, email = '', avatar = ''
+
   switch(profile.provider) {
     case 'facebook':
-      unique_val = profile.emails[0].value
-      //avatar = profile.photos[0].value
+      unique_val = profile.id
+      email = profile.emails[0].value
+      avatar = profile.photos ? profile.photos[0].value : ''
       break
     case 'twitter':
-      unique_val = profile.username
-      avatar = profile.photos[0].value
+      unique_val = profile.id_str
+      avatar = profile.photos ? profile.photos[0].value : ''
       break
     case 'google':
-      unique_val = profile.emails[0].value
-      avatar = profile.photos[0].value
+      unique_val = profile.id
+      email = profile.emails[0].value
+      avatar = profile.photos ? profile.photos[0].value : ''
       break
     case 'github':
-      unique_val = profile.emails[0].value
+      unique_val = profile.id.toString()
+      email = profile.emails[0].value
+      avatar = profile._json.avatar_url
       break
   }
 
-  let searchQuery = { 'social.unique_val': unique_val },
+  let searchQuery = { 'social.unique_val': unique_val, 'provider': profile.provider },
       updates = {
         name: profile.displayName,
+        email: email,
+        display: '',
         social: {
           network_id: profile.id,
           provider: profile.provider,

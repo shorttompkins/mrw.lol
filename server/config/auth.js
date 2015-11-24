@@ -9,7 +9,7 @@ module.exports = {
     clientID: 'CLIENT_ID_HERE',
     clientSecret: 'CLIENT_SECRET_HERE',
     callbackURL: 'http://mrw.lol:3500/auth/facebook/callback',
-    profileFields:  ['id', 'displayName', 'email']
+    profileFields:  ['id', 'displayName', 'email', 'photos']
   },
   twitter: {
     consumerKey: 'CONSUMER_KEY_HERE',

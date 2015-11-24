@@ -10,6 +10,8 @@ let UserTagSchema = new Schema({
 let UserSchema = new Schema({
   name:         String,
   timestamp:    { type: Date, default: Date.now },
+  display:      String,
+  email:        String,
   // TO DO: need a unique display name for the site itself
   social:       {
     network_id:   String,
