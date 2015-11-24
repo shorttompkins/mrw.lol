@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import connectToStores from '../../utils/connectToStores'
 import ImageStore from '../../stores/ImageStore'
+import UserStore from '../../stores/UserStore'
 import { Link } from 'react-router'
 
 class Image extends Component {
   static propTypes = {
-    image: PropTypes.object
+    image: PropTypes.object,
+    userid: PropTypes.string
   }
 
   static getStores() {
@@ -13,7 +15,7 @@ class Image extends Component {
   }
 
   static getStateFromStores() {
-    return { image: ImageStore.getImage() }
+    return { image: ImageStore.getImage(), userid: UserStore.getUserid() }
   }
 
   render() {
@@ -31,9 +33,12 @@ class Image extends Component {
         <img src={image.web_url} className="image-full"/>
 
         <div>
-          <Link to={`/image/add/${image.uniqueid}`} className="button add-button left">
-            <i className="fa fa-plus"></i> Add
-          </Link>
+          { this.props.userid ? (
+              <Link to={`/image/add/${image.uniqueid}`} className="button add-button left">
+                <i className="fa fa-plus"></i> Add
+              </Link>
+            ) : ''
+          }
           Filename: {image.filename.substring(image.uniqueid.length+1)}
           <br/>
           UniqueID: {image.uniqueid}

@@ -97,7 +97,7 @@ module.exports = {
           res.json(image)
         })
       } else {
-        res.status(404).json({});
+        res.status(404).json({})
       }
     })
   },
