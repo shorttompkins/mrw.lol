@@ -6,7 +6,8 @@ let mongoose = require('mongoose'),
 let ImageSchema = new Schema({
   url:        String,
   filename:   String,
-  uniqueid:   String
+  uniqueid:   String,
+  timestamp:  { type: Date, default: Date.now() }
 }, { toJSON: { virtuals: true } })
 
 ImageSchema.virtual('tags')
@@ -35,9 +36,9 @@ ImageSchema.statics.getTags = function(image, cb) {
   let UserModel = require('./user')
   UserModel.aggregate([
     { $unwind: '$tags' },
-    { $sort: { 'tags.name': -1 } },
+    { $sort: { 'tags.name': 1 } },
     { $unwind: '$tags.images' },
-    { $group: { '_id': '$tags.images', 'tags': { $addToSet: '$tags.name' } } },
+    { $group: { '_id': '$tags.images', 'tags': { $push: '$tags.name' } } },
     { $match: { '_id': image._id } }
   ], (err, tags) => {
     image.tags = tags[0].tags

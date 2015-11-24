@@ -16,7 +16,7 @@ let add_user_image = function(tags, tag, image_id) {
 
 module.exports = {
   list(req, res) {
-    Models.Image.find({}, (err, images) => {
+    Models.Image.find({}).sort({timestamp: -1}).exec((err, images) => {
       // to do: would be nice to append list of tags associated with this image
       res.json(images)
     })
@@ -27,7 +27,8 @@ module.exports = {
       { $unwind: '$tags' },
       { $unwind: '$tags.images' },
       { $match: { 'tags.name': req.params.tag.toLowerCase() }},
-      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
+      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
+      { $sort: { timestamp: -1 }}
     ], (err, imageids) => {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
@@ -46,7 +47,8 @@ module.exports = {
       { $unwind: '$tags'},
       { $unwind: '$tags.images' },
       { $match: { 'social.unique_val': req.params.userid }},
-      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
+      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
+      { $sort: { timestamp: -1 }}
     ], (err, imageids) => {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
@@ -65,7 +67,8 @@ module.exports = {
       { $unwind: '$tags' },
       { $unwind: '$tags.images' },
       { $match: { 'social.unique_val': req.params.userid, 'tags.name': req.params.tag.toLowerCase() }},
-      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}}
+      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
+      { $sort: { timestamp: -1 }}
     ], (err, imageids) => {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
