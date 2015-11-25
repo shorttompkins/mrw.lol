@@ -46,6 +46,48 @@ export default {
         }
       })
   },
+  loadImagesByUserId(userid) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_IMAGES_BYUSERID
+    })
+
+    request
+      .get(`/api/users/${userid}/images`)
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGES_BYUSERID_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGES_BYUSERID_SUCCESS,
+            images: res.body
+          })
+        }
+      })
+  },
+  loadImagesByUserIdTag(userid, tag) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_IMAGES_BYUSERID_BYTAG
+    })
+
+    request
+      .get(`/api/users/${userid}/${tag}`)
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGES_BYUSERID_BYTAG_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGES_BYUSERID_BYTAG_SUCCESS,
+            images: res.body
+          })
+        }
+      })
+  },
   loadImageById(id) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.LOAD_IMAGE_BYID
@@ -152,6 +194,27 @@ export default {
         } else {
           AppDispatcher.dispatch({
             actionType: ActionTypes.LOAD_TAGS_SUCCESS,
+            tags: res.body
+          })
+        }
+      })
+  },
+  loadTagsByUserId(userid) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_TAGS_BYUSERID
+    })
+
+    request
+      .get(`/api/users/${userid}/tags`)
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_TAGS_BYUSERID_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_TAGS_BYUSERID_SUCCESS,
             tags: res.body
           })
         }

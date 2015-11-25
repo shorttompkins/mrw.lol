@@ -16,8 +16,15 @@ export default (
       AppActions.loadImages()
       AppActions.loadTags()
     }}/>
+    <Route path="users/:userid" component={ImagesList} onEnter={(location) => {
+      AppActions.loadImagesByUserId(location.params.userid)
+      AppActions.loadTagsByUserId(location.params.userid)
+    }} />
     <Route path="images/:tag" component={ImagesList} onEnter={(location) => {
       AppActions.loadImagesByTag(location.params.tag)
+    }} />
+    <Route path="users/:userid/:tag" component={ImagesList} onEnter={(location) => {
+      AppActions.loadImagesByUserIdTag(location.params.userid, location.params.tag)
     }} />
     <Route path="image/add" component={AddImage} onEnter={() => {
       AppActions.resetImage()

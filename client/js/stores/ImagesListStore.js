@@ -14,10 +14,12 @@ let ImagesListStore = baseStore({
 
 ImagesListStore.dispatchHandler = (payload) => {
   switch(payload.actionType) {
+    case ActionTypes.LOAD_IMAGES_BYUSERID_SUCCESS:
     case ActionTypes.LOAD_IMAGES_SUCCESS:
       _images = payload.images
       ImagesListStore.emitChange()
       break
+    case ActionTypes.LOAD_IMAGES_BYUSERID_BYTAG_SUCCESS:
     case ActionTypes.LOAD_IMAGES_BYTAG_SUCCESS:
       _images = payload.images
       current_tag = payload.tag

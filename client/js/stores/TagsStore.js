@@ -11,6 +11,7 @@ let TagsStore = baseStore({
 
 TagsStore.dispatchHandler = (payload) => {
   switch(payload.actionType) {
+    case ActionTypes.LOAD_TAGS_BYUSERID_SUCCESS:
     case ActionTypes.LOAD_TAGS_SUCCESS:
       _tags = payload.tags
       TagsStore.emitChange()
