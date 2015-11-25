@@ -19,9 +19,21 @@ class AddImage extends Component {
     return { uploading: ImageStore.isUploading(), image: ImageStore.getImage() }
   }
 
+  constructor() {
+    super()
+    this.state = {
+      errorState: false
+    }
+  }
+
   componentDidMount() {
+    let options = {placeholder: 'Enter tags...'}
+
+    if (this.props.image.tags) {
+      options.tags = this.props.image.tags
+    }
     this.setState({
-      tags: new Taggle('tags', {placeholder: 'Enter tags...'})
+      tags: new Taggle('tags', options)
     })
   }
 
@@ -44,16 +56,22 @@ class AddImage extends Component {
     if (this.props.image.uniqueid) {
       data.append('_id', this.props.image._id)
       data.append('uniqueid', this.props.image.uniqueid)
-    }
-    else if (this.refs.file.files.length) {
+    } else if (this.refs.file.files.length) {
       data.append('file', this.refs.file.files[0])
-    } else {
+    } else if (this.refs.url.value) {
       data.append('url', this.refs.url.value)
     }
 
-    data.append('tags', this.state.tags.getTags().values)
+    if (this.state.tags.getTags().values.length > 0) {
+      data.append('tags', this.state.tags.getTags().values)
+      Actions.addImage(data)
+    } else {
+      this.setState({
+        tags: this.state.tags,
+        errorState: true
+      })
+    }
 
-    Actions.addImage(data)
   }
 
   render() {
@@ -89,8 +107,18 @@ class AddImage extends Component {
       )
     }
 
+    let error_msg = ''
+    if (this.state.errorState) {
+      error_msg = (
+        <div className="error-message">
+          <strong>Error:</strong> Please provide a tag before adding an image.
+        </div>
+      )
+    }
+
     return (
       <div>
+        {error_msg}
         <h1>Add a new Reaction Image</h1>
         <form onSubmit={this.addImage} className="add-image" encType="multipart/form-data">
           {upload_fieldset}

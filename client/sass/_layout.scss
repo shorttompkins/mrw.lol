@@ -9,6 +9,15 @@ button { outline: none; }
 .float-left { float: left; }
 .clearfix { clear: both; }
 
+.error-message {
+  width: 100%;
+  padding: 10px;
+  background-color: #F3C6C6;
+  border: solid 1px red;
+  border-radius: 6px;
+  color: maroon;
+}
+
 .page-header {
   position: relative;
   height: 80px;
