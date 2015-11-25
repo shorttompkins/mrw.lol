@@ -39,21 +39,16 @@ module.exports.initialize = function(app, router) {
   router.get('/api/images', api.images.list)
   router.get('/api/images/:tag', api.images.listByTag)
 
-  //router.get('/api/image/:id', api.images.getImageById)
   router.get('/api/image/:uniqueid', api.images.getImageByUniqueId)
-  //router.get('/api/image/:filename', api.images.getImageByFilename)
 
-  router.get('/api/users/:userid/images', api.images.listByUserId)
-  router.get('/api/users/:userid/images/:tag', api.images.listByUserIdTag)
-
-  router.get('/api/tags', api.users.getTags)
-
-  //router.post('/api/image', api.images.addImage)
   router.post('/api/image', upload.single('file'), api.images.addImage)
 
   // ** USERS **
+  router.get('/api/tags', api.users.getTags)
   router.get('/api/users/:userid', api.users.getUserById)
-
+  router.get('/api/users/:userid/images', api.images.listByUserId)
+  router.get('/api/users/:userid/tags', api.users.getTagsByUserId)
+  router.get('/api/users/:userid/:tag', api.images.listByUserIdTag)
 
   // SEED DATA:
   router.get('/api/seed', api.images.seed)

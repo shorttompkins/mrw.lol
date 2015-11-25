@@ -17,7 +17,6 @@ let add_user_image = function(tags, tag, image_id) {
 module.exports = {
   list(req, res) {
     Models.Image.find({}).sort({timestamp: -1}).exec((err, images) => {
-      // to do: would be nice to append list of tags associated with this image
       res.json(images)
     })
   },
@@ -33,7 +32,6 @@ module.exports = {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
         Models.Image.find({_id: { $in: ids } }, (err, images) => {
-          // to do: would be nice to append list of tags associated with this image
           res.json(images)
         })
       } else {
@@ -44,16 +42,15 @@ module.exports = {
 
   listByUserId(req, res) {
     Models.User.aggregate([
+      { $match: { '_id': new ObjectId(req.params.userid) }},
       { $unwind: '$tags'},
       { $unwind: '$tags.images' },
-      { $match: { 'social.unique_val': req.params.userid }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
       { $sort: { timestamp: -1 }}
     ], (err, imageids) => {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
         Models.Image.find({_id: { $in: ids } }, (err, images) => {
-          // to do: would be nice to append list of tags associated with this image
           res.json(images)
         })
       } else {
@@ -73,7 +70,6 @@ module.exports = {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
         Models.Image.find({_id: { $in: ids } }, (err, images) => {
-          // to do: would be nice to append list of tags associated with this image
           res.json(images)
         })
       } else {
