@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import connectToStores from '../../utils/connectToStores'
 import ImageStore from '../../stores/ImageStore'
-import Actions from '../../actions/Actions'
+import ImageActions from '../../actions/ImageActions'
 import Taggle from 'taggle'
 
 class AddImage extends Component {
@@ -64,7 +64,7 @@ class AddImage extends Component {
 
     if (this.state.tags.getTags().values.length > 0) {
       data.append('tags', this.state.tags.getTags().values)
-      Actions.addImage(data)
+      ImageActions.addImage(data)
     } else {
       this.setState({
         tags: this.state.tags,

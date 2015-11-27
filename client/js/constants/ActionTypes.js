@@ -13,10 +13,6 @@ export default keyMirror({
   LOAD_IMAGE_BYID_SUCCESS: null,
   LOAD_IMAGE_BYID_FAIL: null,
 
-  LOAD_IMAGE_BYFILENAME: null,
-  LOAD_IMAGE_BYFILENAME_SUCCESS: null,
-  LOAD_IMAGE_BYFILENAME_FAIL: null,
-
   ADD_IMAGE: null,
   ADD_IMAGE_SUCCESS: null,
   ADD_IMAGE_FAIL: null,
@@ -28,10 +24,6 @@ export default keyMirror({
   LOAD_USER: null,
   LOAD_USER_SUCCESS: null,
   LOAD_USER_FAIL: null,
-
-  LOAD_IMAGE_BYUSERID_BYID: null,
-  LOAD_IMAGE_BYUSERID_BYID_SUCCESS: null,
-  LOAD_IMAGE_BYUSERID_BYID_FAIL: null,
 
   LOAD_TAGS: null,
   LOAD_TAGS_SUCCESS: null,

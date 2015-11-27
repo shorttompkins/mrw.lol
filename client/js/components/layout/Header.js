@@ -49,10 +49,7 @@ class Header extends Component {
               <i className="fa fa-search"></i>
             </button>
           </div>
-          {(user._id) ?
-            <button type="button" onClick={this.addImage} className="button add-button"><i className="fa fa-plus"></i> Add Image</button>
-            : (<div></div>)
-          }
+          {user._id ? <button type="button" onClick={this.addImage} className="button add-button"><i className="fa fa-plus"></i> Add Image</button> : ''}
         </div>
 
         {user._id ? <Logout user={user} /> : <Login />}

@@ -23,15 +23,13 @@ class ImagesList extends Component {
   render() {
     if (!this.props.images.length) { return <i className="fa fa-refresh fa-spin"></i> }
 
-    let images_list = this.props.images.map((image) => (
+    let images_list = this.props.images.map(image => (
       <Card key={image._id} image={image} />
     ))
 
     let title = ''
     if (this.props.params.tag) {
-      title = (
-        <h1>Tag: {this.props.params.tag}</h1>
-      )
+      title = <h1>Tag: {this.props.params.tag}</h1>
     }
 
     let tags = this.props.tags ? this.props.tags.map((tag, index) => (
@@ -47,11 +45,12 @@ class ImagesList extends Component {
           {images_list}
         </div>
         { !title ? (
-        <div className="tags clearfix">
-          <h3>Tags:</h3>
-          {tags}
-        </div>
-      ) : ''}
+          <div className="tags clearfix">
+            <h3>Tags:</h3>
+            {tags}
+          </div>
+          ) : ''
+        }
       </div>
     )
   }

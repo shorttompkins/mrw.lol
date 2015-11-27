@@ -6,13 +6,16 @@ class Logout extends Component {
     user: React.PropTypes.object
   }
   render() {
+    var user_link = this.props.user.display ? this.props.user.display : this.props.user._id
+
     return (
       <div className="login-links">
         <div className="avatar">
-          <Link to={`/users/${this.props.user.display ? this.props.user.display : this.props.user._id}`}><img src={this.props.user.avatar} /></Link>
+          <Link to={`/users/${user_link}`}><img src={this.props.user.avatar} /></Link>
         </div>
         <br/>
-        <a><i className="fa fa-gear"></i></a><br/>
+        <a><i className="fa fa-gear"></i></a>
+        <br/>
         <a href="/auth/logout"><i className="fa fa-sign-out"></i></a>
       </div>
     )

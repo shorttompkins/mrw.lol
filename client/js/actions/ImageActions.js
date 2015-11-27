@@ -88,27 +88,6 @@ export default {
         }
       })
   },
-  loadImageById(id) {
-    AppDispatcher.dispatch({
-      actionType: ActionTypes.LOAD_IMAGE_BYID
-    })
-
-    request
-      .get(`/api/image/${id}`)
-      .end((err, res) =>{
-        if (err) {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_IMAGE_BYID_FAIL,
-            error: err
-          })
-        } else {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_IMAGE_BYID_SUCCESS,
-            image: res.body
-          })
-        }
-      })
-  },
   loadImageByUniqueId(uniqueid) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.LOAD_IMAGE_BYID
@@ -130,27 +109,7 @@ export default {
         }
       })
   },
-  loadImageByFilename(filename) {
-    AppDispatcher.dispatch({
-      actionType: ActionTypes.LOAD_IMAGE_BYFILENAME
-    })
 
-    request
-      .get(`/api/image/${filename}`)
-      .end((err, res) =>{
-        if (err) {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_IMAGE_BYFILENAME_FAIL,
-            error: err
-          })
-        } else {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_IMAGE_BYFILENAME_SUCCESS,
-            image: res.body
-          })
-        }
-      })
-  },
   addImage(image) {
     AppDispatcher.dispatch({
       actionType: ActionTypes.ADD_IMAGE
@@ -177,68 +136,5 @@ export default {
     AppDispatcher.dispatch({
       actionType: ActionTypes.RESET_IMAGE
     })
-  },
-  loadTags() {
-    AppDispatcher.dispatch({
-      actionType: ActionTypes.LOAD_TAGS
-    })
-
-    request
-      .get('/api/tags')
-      .end((err, res) =>{
-        if (err) {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_TAGS_FAIL,
-            error: err
-          })
-        } else {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_TAGS_SUCCESS,
-            tags: res.body
-          })
-        }
-      })
-  },
-  loadTagsByUserId(userid) {
-    AppDispatcher.dispatch({
-      actionType: ActionTypes.LOAD_TAGS_BYUSERID
-    })
-
-    request
-      .get(`/api/users/${userid}/tags`)
-      .end((err, res) =>{
-        if (err) {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_TAGS_BYUSERID_FAIL,
-            error: err
-          })
-        } else {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_TAGS_BYUSERID_SUCCESS,
-            tags: res.body
-          })
-        }
-      })
-  },
-  getUserById(userid) {
-    AppDispatcher.dispatch({
-      actionType: ActionTypes.LOAD_USER
-    })
-
-    request
-      .get(`/api/users/${userid}`)
-      .end((err, res) =>{
-        if (err) {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_USER_FAIL,
-            error: err
-          })
-        } else {
-          AppDispatcher.dispatch({
-            actionType: ActionTypes.LOAD_USER_SUCCESS,
-            user: res.body
-          })
-        }
-      })
   }
 }

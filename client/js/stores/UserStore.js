@@ -1,7 +1,7 @@
 import baseStore from '../utils/baseStore'
 import ActionTypes from '../constants/ActionTypes.js'
 
-let _user = {}, _userid = window.userid
+let _user = {}
 
 let UserStore = baseStore({
   getUser() {
