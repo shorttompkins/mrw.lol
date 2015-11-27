@@ -1,4 +1,9 @@
 # CHANGE LOG
+
+## 2015-11-26
+- Happy Thanksgiving!  Added user avatar and user profile scree.
+- Lots of cleanup/refactoring.
+
 ## 2015-11-23
 - Added live preview on Add Image screen, improved visual indicators of upload status (i.e. loading spinner, success checkmark and failure x)
 - Quick Add existing images - just goto image details and hit the `+ Add` button to add an existing image with your own tags!
