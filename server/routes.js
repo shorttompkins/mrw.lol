@@ -52,12 +52,13 @@ module.exports.initialize = function(app, router) {
   // ** USERS **
   router.get('/api/users/:userid', api.users.getUserById)
   router.get('/api/users/:userid/images', api.images.listByUserId)
-  router.get('/api/users/:userid/:tag', api.images.listByUserIdTag)
   router.get('/api/users/:userid/tags', api.tags.getTagsByUserId)
+  router.get('/api/users/:userid/:tag', api.images.listByUserIdTag)
 
   // ** TAGS **
   router.get('/api/tags', api.tags.getTags)
-  
+  router.get('/api/users/:userid/tags/:imageid', api.tags.getTagsByUserIdImageId)
+
 
   // SEED DATA:
   router.get('/api/seed', api.images.seed)

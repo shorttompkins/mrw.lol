@@ -32,7 +32,7 @@ ImageSchema.statics.generateUniqueId = function() {
   return retVal
 }
 
-ImageSchema.statics.getTags = function(image, cb, userid) {
+ImageSchema.statics.getTags = function(image, cb) {
   let UserModel = require('./user'),
       options = [
         { $unwind: '$tags' },
@@ -40,12 +40,9 @@ ImageSchema.statics.getTags = function(image, cb, userid) {
         { $group: { '_id': '$tags.images', 'tags': { $push: '$tags.name' } } },
         { $unwind: '$tags' },
         { $match: { '_id': image._id } },
-        { $sort: { 'tags': 1 } },
+        { $sort: { 'tags': -1 } },
         { $group: { '_id': 1, 'tags': { $addToSet: '$tags' } } }
       ]
-  if (userid) {
-    options.unshift({ $match: { '_id': userid } })
-  }
 
   UserModel.aggregate(options, (err, tags) => {
     image.tags = tags[0].tags

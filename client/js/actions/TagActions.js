@@ -44,5 +44,26 @@ export default {
           })
         }
       })
+  },
+  loadImageUserTags(imageid, userid) {
+    AppDispatcher.dispatch({
+      actionType: ActionTypes.LOAD_IMAGE_TAGS_BYUSER
+    })
+
+    request
+      .get(`/api/users/${userid}/tags/${imageid}`)
+      .end((err, res) =>{
+        if (err) {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGE_TAGS_BYUSER_FAIL,
+            error: err
+          })
+        } else {
+          AppDispatcher.dispatch({
+            actionType: ActionTypes.LOAD_IMAGE_TAGS_BYUSER_SUCCESS,
+            tags: res.body
+          })
+        }
+      })
   }
 }

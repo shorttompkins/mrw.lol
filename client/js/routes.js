@@ -34,6 +34,10 @@ export default (
     }} />
     <Route path="image/:id" component={Image} onEnter={(location) => {
       ImageActions.loadImageByUniqueId(location.params.id)
+      // if logged in, load users TAGS
+      if (window.userid) {
+        TagActions.loadImageUserTags(location.params.id, window.userid)
+      }
     }} />
   </Route>
 )
