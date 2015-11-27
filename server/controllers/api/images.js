@@ -89,20 +89,16 @@ module.exports = {
   getImageByUniqueId(req, res) {
     Models.Image.findOne({uniqueid: req.params.uniqueid}, (err, image) => {
       if (image) {
+        let userid = req.params.userid || null
         Models.Image.getTags(image, () => {
+          if (userid) {
+            image.owner = userid
+          }
           res.json(image)
-        })
+        }, userid)
       } else {
         res.status(404).json({})
       }
-    })
-  },
-
-  getImageByFilename(req, res) {
-    Models.Image.findOne({filename: encodeURIComponent(req.params.filename.toLowerCase())}, (err, image) => {
-      Models.Image.getTags(image, () => {
-        res.json(image)
-      })
     })
   },
 

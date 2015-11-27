@@ -22,12 +22,16 @@ export default keyMirror({
   ADD_IMAGE_FAIL: null,
 
   RESET_IMAGE: null,
-  
+
 
   // USERS:
   LOAD_USER: null,
   LOAD_USER_SUCCESS: null,
   LOAD_USER_FAIL: null,
+
+  LOAD_IMAGE_BYUSERID_BYID: null,
+  LOAD_IMAGE_BYUSERID_BYID_SUCCESS: null,
+  LOAD_IMAGE_BYUSERID_BYID_FAIL: null,
 
   LOAD_TAGS: null,
   LOAD_TAGS_SUCCESS: null,

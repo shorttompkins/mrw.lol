@@ -22,6 +22,7 @@ let ImageStore = baseStore({
 
 ImageStore.dispatchHandler = (payload) => {
   switch(payload.actionType) {
+    case ActionTypes.LOAD_IMAGE_BYUSERID_BYID_SUCCESS:
     case ActionTypes.LOAD_IMAGE_BYID_SUCCESS:
       _image = payload.image
       ImageStore.emitChange()
