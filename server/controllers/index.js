@@ -1,4 +1,5 @@
 module.exports = {
   home: require('./home'),
-  about: require('./about')
+  about: require('./about'),
+  auth: require('./auth')
 }

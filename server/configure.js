@@ -2,7 +2,6 @@
 
 var path = require('path'),
     express = require('express'),
-    //apiHelper = require('../api/helper'),
     fs = require('fs'),
     passport = require('passport'),
     mongoose = require('mongoose'),
@@ -29,7 +28,6 @@ module.exports = function(app, config) {
     defaultLayout: 'layout',
     layoutsDir: app.get('views') + '/layouts',
     partialsDir: [app.get('views') + '/partials']
-    //helpers: require('../helpers/handlebars')
   })
   app.engine('html', hbs.engine)
   app.set('view engine', 'html')
@@ -54,8 +52,6 @@ module.exports = function(app, config) {
   }
 
   app.set('config', config)
-
-  //apiHelper.configure(config);
 
   routes.initialize(app, new express.Router())
 
