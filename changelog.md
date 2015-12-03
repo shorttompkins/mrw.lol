@@ -2,6 +2,7 @@
 
 ## 2015-12-2
 - Fix User tags for logged in users - on image display screen and image list screen (user profile)
+- Improved loading indicator for ImagesList as well as a not found notice on empty results search
 
 ## 2015-11-26
 - Happy Thanksgiving!  Added user avatar and user profile scree.

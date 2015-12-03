@@ -8,6 +8,7 @@ import {Link} from 'react-router'
 class ImagesList extends Component {
   static propTypes = {
     images: PropTypes.array,
+    imagesLoading: PropTypes.bool,
     tags: PropTypes.array,
     params: PropTypes.object
   }
@@ -17,15 +18,15 @@ class ImagesList extends Component {
   }
 
   static getStateFromStores() {
-    return { images: ImagesListStore.getImages(), tags: TagsStore.getTags() }
+    return { images: ImagesListStore.getImages(), tags: TagsStore.getTags(), imagesLoading: ImagesListStore.getLoadingStatus() }
   }
 
   render() {
-    if (!this.props.images.length) { return <i className="fa fa-refresh fa-spin"></i> }
+    if (this.props.imagesLoading) { return <i className="fa fa-refresh fa-spin"></i> }
 
-    let images_list = this.props.images.map(image => (
+    let images_list = this.props.images.length ? this.props.images.map(image => (
       <Card key={image._id} image={image} />
-    ))
+    )) : (<strong><br/>No matching images found.</strong>)
 
     let title = ''
     if (this.props.params.tag) {
