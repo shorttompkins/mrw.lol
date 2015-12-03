@@ -1,5 +1,8 @@
 # CHANGE LOG
 
+## 2015-12-2
+- Fix User tags for logged in users - on image display screen and image list screen (user profile)
+
 ## 2015-11-26
 - Happy Thanksgiving!  Added user avatar and user profile scree.
 - Lots of cleanup/refactoring.
