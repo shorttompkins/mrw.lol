@@ -63,7 +63,7 @@ module.exports = {
     Models.User.aggregate([
       { $unwind: '$tags' },
       { $unwind: '$tags.images' },
-      { $match: { 'social.unique_val': req.params.userid, 'tags.name': req.params.tag.toLowerCase() }},
+      { $match: { '_id': new ObjectId(req.params.userid), 'tags.name': req.params.tag.toLowerCase() }},
       { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
       { $sort: { timestamp: -1 }}
     ], (err, imageids) => {

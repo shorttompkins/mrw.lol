@@ -33,7 +33,7 @@ class Image extends Component {
     let user_tags = ''
     if (this.props.usertags.length) {
       user_tags = this.props.usertags.map((tag, index) => (
-        <Link className="tag-link user-tag" to={`/images/${tag}`} key={index}>
+        <Link className="tag-link user-tag" to={`/users/${this.props.user._id}/${tag}`} key={index}>
           <i className="fa fa-tag"></i> {tag}
         </Link>
       ))
