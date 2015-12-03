@@ -102,7 +102,7 @@ class AddImage extends Component {
           <legend> Image File: </legend>
           <label>Upload:</label> <input type="file" ref="file" onChange={this.previewImage} /><br />
           <div className="or-sep"> - or - </div>
-          <label>URL:</label> <input type="text" className="input" ref="url" />
+          <label>URL:</label> <input type="text" onChange={this.previewImage} className="input" ref="url" />
         </fieldset>
       )
     }
