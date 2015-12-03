@@ -8,6 +8,8 @@ module.exports.initialize = function(app, router) {
   // ** BASIC PAGES **
   router.get('/about', controllers.about.index)
   router.get('/image/:imageid', controllers.home.index)
+  router.get('/random/:tag', controllers.home.randomTag)
+  router.get('/random/:userid/:tag', controllers.home.randomTagByUserId)
 
   // ** AUTHENTICATION **
   function authHandler(req, res) {
@@ -62,7 +64,6 @@ module.exports.initialize = function(app, router) {
 
   // SEED DATA:
   router.get('/api/seed', api.images.seed)
-
 
   // Every other route defaults to the homepage (because of SPA):
   router.get('/*', controllers.home.index)

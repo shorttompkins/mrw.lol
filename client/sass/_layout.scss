@@ -141,6 +141,12 @@ button { outline: none; }
 .body {
   clear: both;
 
+  .random-link {
+    font-size: .75em;
+    float: right;
+    padding-top: .25em;
+  }
+
   .image-card {
     position: relative;
     float: left;

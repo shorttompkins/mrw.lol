@@ -1,6 +1,7 @@
 # CHANGE LOG
 
 ## 2015-12-2
+- Include random link per tag (randomly display an image per tag) - for all and users specifically
 - Fix User tags for logged in users - on image display screen and image list screen (user profile)
 - Improved loading indicator for ImagesList as well as a not found notice on empty results search
 

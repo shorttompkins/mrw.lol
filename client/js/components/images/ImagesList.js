@@ -30,7 +30,19 @@ class ImagesList extends Component {
 
     let title = ''
     if (this.props.params.tag) {
-      title = <h1>Tag: {this.props.params.tag}</h1>
+      let randomUrl = `/random/${this.props.params.tag}`
+
+      if (this.props.params.userid) {
+        randomUrl = `/random/${this.props.params.userid}/${this.props.params.tag}`
+      }
+
+      title = (
+        <h1>Tag: {this.props.params.tag}
+          <div className="random-link">
+            <a href={randomUrl}><i className="fa fa-random"></i></a>
+          </div>
+        </h1>
+      )
     }
 
     let tags = this.props.tags ? this.props.tags.map((tag, index) => {

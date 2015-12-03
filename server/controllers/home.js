@@ -1,4 +1,5 @@
-let Models = require('../models')
+let Models = require('../models'),
+    ObjectId = require('mongoose').Types.ObjectId
 
 module.exports = {
   index(req, res) {
@@ -17,6 +18,41 @@ module.exports = {
     } else {
       res.render('home', model)
     }
-  }
+  },
+  randomTag(req, res) {
+    Models.User.aggregate([
+      { $unwind: '$tags' },
+      { $unwind: '$tags.images' },
+      { $match: { 'tags.name': req.params.tag.toLowerCase() }},
+      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
+      { $sort: { timestamp: -1 }}
+    ], (err, imageids) => {
+      if (imageids.length) {
+        let ids = imageids[0].images.map(image => new ObjectId(image)),
+            rand = Math.floor(Math.random()*ids.length)
 
+        Models.Image.findOne({_id: ids[rand]}, (err, image) => {
+          res.redirect(`/image/${image.uniqueid}`)
+        })
+      }
+    })
+  },
+  randomTagByUserId(req, res) {
+    Models.User.aggregate([
+      { $unwind: '$tags' },
+      { $unwind: '$tags.images' },
+      { $match: { '_id': new ObjectId(req.params.userid), 'tags.name': req.params.tag.toLowerCase() }},
+      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
+      { $sort: { timestamp: -1 }}
+    ], (err, imageids) => {
+      if (imageids.length) {
+        let ids = imageids[0].images.map(image => new ObjectId(image)),
+            rand = Math.floor(Math.random()*ids.length)
+
+        Models.Image.findOne({_id: ids[rand]}, (err, image) => {
+          res.redirect(`/image/${image.uniqueid}`)
+        })
+      }
+    })
+  }
 }
