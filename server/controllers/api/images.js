@@ -24,10 +24,9 @@ module.exports = {
   listByTag(req, res) {
     Models.User.aggregate([
       { $unwind: '$tags' },
-      { $unwind: '$tags.images' },
       { $match: { 'tags.name': req.params.tag.toLowerCase() }},
-      { $group: { _id: '$_id', images: { $addToSet: '$tags.images' }}},
-      { $sort: { timestamp: -1 }}
+      { $unwind: '$tags.images' },
+      { $group: { _id: '1', images: { $addToSet: '$tags.images' }}}
     ], (err, imageids) => {
       if (imageids.length) {
         let ids = imageids[0].images.map(image => new ObjectId(image))
