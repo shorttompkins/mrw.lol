@@ -151,10 +151,10 @@ module.exports = {
           })
         } else if (req.body.url) {
           // download the file:
-          filename = req.body.url.substring(req.body.url.lastIndexOf('/')+1)
+          filename = uniqueid + '_' + req.body.url.substring(req.body.url.lastIndexOf('/')+1)
           file_url = req.body.url.replace('https://', 'http://')
 
-          let file = fs.createWriteStream(path.join(__dirname, `../../public/upload/${uniqueid}_${filename}`))
+          let file = fs.createWriteStream(path.join(__dirname, `../../public/upload/${filename}`))
 
           http.get(file_url, (response) => {
             response.pipe(file)
