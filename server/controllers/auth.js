@@ -10,19 +10,19 @@ let passport = require('passport'),
 
 let handler = (accessToken, refreshToken, profile, done) => {
   let unique_val, email = '', avatar = ''
-
+  console.log(profile)
   switch(profile.provider) {
     case 'facebook':
-      unique_val = profile.id
+      unique_val = profile.id.toString()
       email = profile.emails[0].value
       avatar = profile.photos ? profile.photos[0].value : ''
       break
     case 'twitter':
-      unique_val = profile.id_str
+      unique_val = profile.id.toString()
       avatar = profile.photos ? profile.photos[0].value : ''
       break
     case 'google':
-      unique_val = profile.id
+      unique_val = profile.id.toString()
       email = profile.emails[0].value
       avatar = profile.photos ? profile.photos[0].value : ''
       break
@@ -47,6 +47,8 @@ let handler = (accessToken, refreshToken, profile, done) => {
         }
       },
       options = { upsert: true }
+
+
 
   Models.User.findOneAndUpdate(searchQuery, updates, options, (err, user) => {
     if (err) {
