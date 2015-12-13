@@ -10,7 +10,7 @@ let passport = require('passport'),
 
 let handler = (accessToken, refreshToken, profile, done) => {
   let unique_val, email = '', avatar = ''
-  console.log(profile)
+
   switch(profile.provider) {
     case 'facebook':
       unique_val = profile.id.toString()
@@ -46,9 +46,7 @@ let handler = (accessToken, refreshToken, profile, done) => {
           access_token: accessToken
         }
       },
-      options = { upsert: true }
-
-
+      options = { new: true, upsert: true }
 
   Models.User.findOneAndUpdate(searchQuery, updates, options, (err, user) => {
     if (err) {
