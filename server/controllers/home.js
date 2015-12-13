@@ -32,8 +32,8 @@ module.exports = {
             rand = Math.floor(Math.random()*ids.length)
 
         Models.Image.findOne({_id: ids[rand]}, (err, image) => {
-          //res.redirect(`/image/${image.uniqueid}`)
-          res.redirect(`${req.app.get('config').image_root_url}${image.url}`)
+          res.redirect(`/image/${image.uniqueid}`)
+          //res.redirect(`${req.app.get('config').image_root_url}${image.url}`)
         })
       }
     })
