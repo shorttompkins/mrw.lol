@@ -47,6 +47,7 @@ class AddImage extends Component {
     } else {
       this.refs.preview.src = this.refs.url.value
     }
+    this.state.tags.removeAll()
   }
 
   addImage = (e) => {
