@@ -62,9 +62,6 @@ module.exports.initialize = function(app, router) {
   router.get('/api/users/:userid/tags/:imageid', api.tags.getTagsByUserIdImageId)
 
 
-  // SEED DATA:
-  router.get('/api/seed', api.images.seed)
-
   // Every other route defaults to the homepage (because of SPA):
   router.get('/*', controllers.home.index)
 

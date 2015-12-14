@@ -28,13 +28,13 @@ $ npm start
 $ open http://localhost:3500
 ```
 
-## Seed data
+_Notes:_ PORT 3500 is the default port of the app, but can be easily overridden using env var i.e. `$ PORT=80 npm start`
+MongoDB isn't required to be run locally; you can either use the local Docker container to run MongoDB or you can simply use an external service like MongoLab et al.
 
-Before you can seed data, you need a valid user account.  The easiest way to get one (currently) is to simply point your browser to http://mrw.lol:3500/auth/twitter (or `facebook`, or `google`, or `github`).  *Important Note:* Its best to edit your `/etc/hosts` file and include `127.0.0.1 mrw.lol` so that the social network properly redirects back to the website.
+## Configuring Social Network Auth
 
-*Second Important Note:* your local `server/config/auth.js` file will need to be updated with **your** social network API key/values.
-
-Once you've logged in at least once, point your browser to `http://localhost:3500/api/seed` to populate the database with some sample images.
+Before you can use the app locally, you need to be able to login (and thus, create a user account).  In order to login, you need to configure the Social Network auth keys with your *OWN*
+keys.
 
 # Global Dependencies
 
