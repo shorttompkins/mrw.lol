@@ -34,7 +34,7 @@ MongoDB isn't required to be run locally; you can either use the local Docker co
 ## Configuring Social Network Auth
 
 Before you can use the app locally, you need to be able to login (and thus, create a user account).  In order to login, you need to configure the Social Network auth keys with your *OWN*
-keys.
+keys. Edit `/server/config/auth.js` and update each accordingly.
 
 # Global Dependencies
 
