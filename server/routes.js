@@ -18,25 +18,14 @@ module.exports.initialize = function(app, router) {
     req.session.cookie.maxAge = 14 * 24 * hour
     res.redirect('/')
   }
-  router.get('/auth/twitter', auth('twitter')
-    .authenticate('twitter'))
-  router.get('/auth/twitter/callback', auth('twitter')
-    .authenticate('twitter', { failureRedirect: '/' }), authHandler)
-
-  router.get('/auth/facebook', auth('facebook')
-    .authenticate('facebook', { scope: 'email' }))
-  router.get('/auth/facebook/callback', auth('facebook')
-    .authenticate('facebook', { failureRedirect: '/' }), authHandler)
-
-  router.get('/auth/github', auth('github')
-    .authenticate('github', { scope: [ 'user:email' ] }))
-  router.get('/auth/github/callback', auth('github')
-    .authenticate('github', { failureRedirect: '/' }), authHandler)
-
-  router.get('/auth/google', auth('google')
-    .authenticate('google', { scope: [ 'profile', 'email' ] }))
-  router.get('/auth/google/callback', auth('google')
-    .authenticate('google', { failureRedirect: '/' }), authHandler)
+  router.get('/auth/twitter', auth('twitter').authenticate('twitter'))
+  router.get('/auth/twitter/callback', auth('twitter').authenticate('twitter', { failureRedirect: '/' }), authHandler)
+  router.get('/auth/facebook', auth('facebook').authenticate('facebook', { scope: 'email' }))
+  router.get('/auth/facebook/callback', auth('facebook').authenticate('facebook', { failureRedirect: '/' }), authHandler)
+  router.get('/auth/github', auth('github').authenticate('github', { scope: [ 'user:email' ] }))
+  router.get('/auth/github/callback', auth('github').authenticate('github', { failureRedirect: '/' }), authHandler)
+  router.get('/auth/google', auth('google').authenticate('google', { scope: [ 'profile', 'email' ] }))
+  router.get('/auth/google/callback', auth('google').authenticate('google', { failureRedirect: '/' }), authHandler)
 
   router.get('/auth/logout', (req, res) => {
     req.session.destroy()

@@ -1,6 +1,4 @@
-'use strict'
-
-var path = require('path'),
+let path = require('path'),
     express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
@@ -63,8 +61,6 @@ module.exports = function(app, config) {
       })
     }
   })
-
-  console.log('Server configured.')
 
   return app
 }
