@@ -146,51 +146,6 @@ button { outline: none; }
     float: right;
     padding-top: .25em;
   }
-
-  .image-card {
-    position: relative;
-    float: left;
-    width: 190px;
-    height: 190px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin-right: 10px; margin-bottom: 10px;
-    img, canvas {
-      position: absolute;
-      z-index: 1;
-      top: 0px;
-      left: 0px;
-      width: 190px;
-      height: 190px;
-      &.hide {
-        display: none;
-      }
-      &.show {
-        display: block;
-      }
-      &:hover {
-        border: inset 1px #00ADFF;
-        width: 188px;
-        height: 188px;
-      }
-    }
-    i.fa-search-plus {
-      z-index: 2;
-      display: none;
-      color: #00ADFF;
-      position: absolute;
-      top: -5px;
-      left: -5px;
-      background-color: #ffffff;
-      border-radius: 4px;
-      border: solid 1px #00ADFF;
-      padding: 2px;
-    }
-    &:hover i.fa-search-plus {
-      display: block;
-    }
-  }
 }
 
 .comments {
