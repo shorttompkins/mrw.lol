@@ -5,18 +5,18 @@ import ImageActions from '../../actions/ImageActions'
 import Taggle from 'taggle'
 
 class AddImage extends Component {
-  static propTypes = {
-    params: PropTypes.object,
-    image: PropTypes.object,
-    uploading: PropTypes.string
-  }
-
   static getStores() {
     return [ImageStore]
   }
 
   static getStateFromStores() {
     return { uploading: ImageStore.isUploading(), image: ImageStore.getImage() }
+  }
+
+  static propTypes = {
+    params: PropTypes.object,
+    image: PropTypes.object,
+    uploading: PropTypes.string
   }
 
   constructor() {

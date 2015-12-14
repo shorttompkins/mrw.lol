@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { isFunction } from 'lodash'
 
 function connectToStores(Component) {
@@ -9,27 +9,24 @@ function connectToStores(Component) {
     throw new Error('connectToStores() expects the wrapped component to have a static getStateFromStores() method')
   }
 
-  let stores = Component.getStores()
-  let getStateFromStores = Component.getStateFromStores
-
-  class StoreConnection extends React.Component {
+  class StoreConnection extends Component {
     constructor(props, context) {
       super(props, context)
-      this.state = getStateFromStores(this.props)
+      this.state = Component.getStateFromStores()
     }
 
-    componentDidMount = () => {
-      stores.forEach(store =>
+    componentDidMount() {
+      Component.getStores().forEach(store =>
         store.addChangeListener(this.handleStoresChanged)
       )
     }
-    componentWillUnmount = () => {
-      stores.forEach(store =>
+    componentWillUnmount() {
+      Component.getStores().forEach(store =>
         store.removeChangeListener(this.handleStoresChanged)
       )
     }
     handleStoresChanged = () => {
-      this.setState(getStateFromStores(this.props))
+      this.setState(Component.getStateFromStores(this.props))
     }
     render() {
       Component.getStores()

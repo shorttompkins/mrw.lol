@@ -1,6 +1,7 @@
 import keyMirror from 'keymirror'
 
 export default keyMirror({
+  // IMAGES:
   LOAD_IMAGES: null,
   LOAD_IMAGES_SUCCESS: null,
   LOAD_IMAGES_FAIL: null,

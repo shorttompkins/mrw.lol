@@ -6,18 +6,18 @@ import TagsStore from '../../stores/TagsStore'
 import { Link } from 'react-router'
 
 class Image extends Component {
-  static propTypes = {
-    image: PropTypes.object,
-    user: PropTypes.object,
-    usertags: PropTypes.array
-  }
-
   static getStores() {
     return [ImageStore, UserStore, TagsStore]
   }
 
   static getStateFromStores() {
     return { image: ImageStore.getImage(), user: UserStore.getUser(), usertags: TagsStore.getUserTags() }
+  }
+
+  static propTypes = {
+    image: PropTypes.object,
+    user: PropTypes.object,
+    usertags: PropTypes.array
   }
 
   render() {

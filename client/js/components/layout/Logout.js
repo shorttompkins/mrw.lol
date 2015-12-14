@@ -6,7 +6,7 @@ class Logout extends Component {
     user: React.PropTypes.object
   }
   render() {
-    var user_link = this.props.user.display ? this.props.user.display : this.props.user._id
+    var user_link = this.props.user.display || this.props.user._id
 
     return (
       <div className="login-links">

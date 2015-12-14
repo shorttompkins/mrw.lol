@@ -6,19 +6,19 @@ import Card from './Card'
 import {Link} from 'react-router'
 
 class ImagesList extends Component {
-  static propTypes = {
-    images: PropTypes.array,
-    imagesLoading: PropTypes.bool,
-    tags: PropTypes.array,
-    params: PropTypes.object
-  }
-
   static getStores() {
     return [ImagesListStore, TagsStore]
   }
 
   static getStateFromStores() {
     return { images: ImagesListStore.getImages(), tags: TagsStore.getTags(), imagesLoading: ImagesListStore.getLoadingStatus() }
+  }
+
+  static propTypes = {
+    images: PropTypes.array,
+    imagesLoading: PropTypes.bool,
+    tags: PropTypes.array,
+    params: PropTypes.object
   }
 
   render() {

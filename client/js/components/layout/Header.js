@@ -7,16 +7,16 @@ import Logout from './Logout'
 import UserStore from '../../stores/UserStore'
 
 class Header extends Component {
-  static propTypes = {
-    user: PropTypes.object
-  }
-
   static getStores() {
     return [UserStore]
   }
 
   static getStateFromStores() {
     return { user: UserStore.getUser() }
+  }
+
+  static propTypes = {
+    user: PropTypes.object
   }
 
   tagSearch = () => {
