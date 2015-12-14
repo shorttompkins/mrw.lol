@@ -1,5 +1,11 @@
 # CHANGE LOG
 
+## 2015-12-12
+- Fix Twitter login bug (non unique users)
+- Fix aggregate MongoDB query that wasn't loading images by tag correctly
+- Pause gifs on List components, animating only when onmouseover
+- Fix double login bug with new users (broken upsert options with MongoDB query)
+
 ## 2015-12-2
 - Include random link per tag (randomly display an image per tag) - for all and users specifically
 - Fix User tags for logged in users - on image display screen and image list screen (user profile)
