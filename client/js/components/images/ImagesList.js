@@ -12,7 +12,7 @@ class ImagesList extends Component {
 
   static getStateFromStores() {
     return {
-      images: ImagesListStore.getImages(), 
+      images: ImagesListStore.getImages(),
       tags: TagsStore.getTags(),
       imagesLoading: ImagesListStore.getLoadingStatus()
     }
@@ -49,9 +49,20 @@ class ImagesList extends Component {
       )
     }
 
-    let tags = this.props.tags.map((tag, index) => (
+    let tags = this.props.tags ? this.props.tags.map((tag, index) => (
       <Tag tag={tag} key={index} userid={this.props.params.userid} />
-    ))
+    )) : ''
+
+    if (!title) {
+      tags = (
+        <div className="tags clearfix">
+          <h3>Tags:</h3>
+          {tags}
+        </div>
+      )
+    } else {
+      tags = ''
+    }
 
     return (
       <div>
@@ -59,13 +70,7 @@ class ImagesList extends Component {
           {title}
           {images_list.length ? images_list : (<strong><br/>No matching images found.</strong>)}
         </div>
-        { !title ? (
-          <div className="tags clearfix">
-            <h3>Tags:</h3>
-            {tags}
-          </div>
-          ) : ''
-        }
+        { tags }
       </div>
     )
   }
