@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2015-12-16
+- Introduce new Tag component
+- Refactor Image and ImagesList components to use Tag component
+
 ## 2015-12-12
 - Fix Twitter login bug (non unique users)
 - Fix aggregate MongoDB query that wasn't loading images by tag correctly
