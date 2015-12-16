@@ -4,6 +4,7 @@ import ImageStore from '../../stores/ImageStore'
 import UserStore from '../../stores/UserStore'
 import TagsStore from '../../stores/TagsStore'
 import { Link } from 'react-router'
+import Tag from './Tag'
 
 class Image extends Component {
   static getStores() {
@@ -23,21 +24,14 @@ class Image extends Component {
   render() {
     if (!this.props.image.url) { return <i className="fa fa-refresh fa-spin"></i> }
 
-    let image = this.props.image,
+    let { image } = this.props,
         tags = image.tags.map((tag, index) => (
-          <Link className="tag-link" to={`/images/${tag}`} key={index}>
-            <i className="fa fa-tag"></i> {tag}
-          </Link>
+          <Tag tag={tag} key={index} />
         ))
 
-    let user_tags = ''
-    if (this.props.usertags.length) {
-      user_tags = this.props.usertags.map((tag, index) => (
-        <Link className="tag-link user-tag" to={`/users/${this.props.user._id}/${tag}`} key={index}>
-          <i className="fa fa-tag"></i> {tag}
-        </Link>
-      ))
-    }
+    let user_tags = this.props.usertags.map((tag, index) => (
+      <Tag tag={tag} key={index} userid={this.props.user._id} />
+    ))
 
     return (
       <div className="image">

@@ -3,7 +3,7 @@ import connectToStores from '../../utils/connectToStores'
 import ImagesListStore from '../../stores/ImagesListStore'
 import TagsStore from '../../stores/TagsStore'
 import Card from './Card'
-import {Link} from 'react-router'
+import Tag from './Tag'
 
 class ImagesList extends Component {
   static getStores() {
@@ -11,7 +11,11 @@ class ImagesList extends Component {
   }
 
   static getStateFromStores() {
-    return { images: ImagesListStore.getImages(), tags: TagsStore.getTags(), imagesLoading: ImagesListStore.getLoadingStatus() }
+    return {
+      images: ImagesListStore.getImages(), 
+      tags: TagsStore.getTags(),
+      imagesLoading: ImagesListStore.getLoadingStatus()
+    }
   }
 
   static propTypes = {
@@ -24,9 +28,9 @@ class ImagesList extends Component {
   render() {
     if (this.props.imagesLoading) { return <i className="fa fa-refresh fa-spin"></i> }
 
-    let images_list = this.props.images.length ? this.props.images.map(image => (
+    let images_list = this.props.images.map(image => (
       <Card key={image._id} image={image} />
-    )) : (<strong><br/>No matching images found.</strong>)
+    ))
 
     let title = ''
     if (this.props.params.tag) {
@@ -45,26 +49,15 @@ class ImagesList extends Component {
       )
     }
 
-    let tags = this.props.tags ? this.props.tags.map((tag, index) => {
-      let tagLink, className = 'tag-link'
-      if (this.props.params.userid) {
-        tagLink = `/users/${this.props.params.userid}/${tag}`
-        className += ' user-tag'
-      } else {
-        tagLink = `/images/${tag}`
-      }
-      return (
-        <Link className={className} to={tagLink} key={index}>
-          <i className="fa fa-tag"></i> {tag}
-        </Link>
-      )
-    }) : ''
+    let tags = this.props.tags.map((tag, index) => (
+      <Tag tag={tag} key={index} userid={this.props.params.userid} />
+    ))
 
     return (
       <div>
         <div className="images">
           {title}
-          {images_list}
+          {images_list.length ? images_list : (<strong><br/>No matching images found.</strong>)}
         </div>
         { !title ? (
           <div className="tags clearfix">
