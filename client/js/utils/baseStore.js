@@ -19,6 +19,7 @@ function extendBaseStore(Store) {
     if (this.dispatchHandler) {
       this.dispatchHandler(payload)
     } else {
+      /*eslint-disable no-console */
       console.debug(`${payload.actionType} was ignored because dispatchHandler() was not defined for this Store.`)
     }
   }.bind(newStore))
