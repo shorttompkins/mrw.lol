@@ -4,6 +4,9 @@ import ImageStore from '../../stores/ImageStore'
 import ImageActions from '../../actions/ImageActions'
 import Taggle from 'taggle'
 
+import 'stylesheets/components/images/addimage'
+import 'stylesheets/taggle'
+
 class AddImage extends Component {
   static getStores() {
     return [ImageStore]
@@ -118,7 +121,7 @@ class AddImage extends Component {
     }
 
     return (
-      <div>
+      <div className="addimage">
         {error_msg}
         <h1>Add a new Reaction Image</h1>
         <form onSubmit={this.addImage} className="add-image" encType="multipart/form-data">

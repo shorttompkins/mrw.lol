@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
+import 'stylesheets/components/images/tag-link'
+
 class Tag extends Component {
   static propTypes = {
     tag: PropTypes.string.isRequired,
@@ -10,7 +12,7 @@ class Tag extends Component {
   static defaultProps = {
     userid: ''
   }
-  
+
   render() {
     let { tag } = this.props
 

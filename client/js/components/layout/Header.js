@@ -6,6 +6,8 @@ import Login from './Login'
 import Logout from './Logout'
 import UserStore from '../../stores/UserStore'
 
+import 'stylesheets/components/layout/header'
+
 class Header extends Component {
   static getStores() {
     return [UserStore]
@@ -37,7 +39,7 @@ class Header extends Component {
   render() {
     const { user } = this.props
     return (
-      <div className="page-header">
+      <div className="header">
         <h1>
           <Link to="/">MRW.lol</Link>
         </h1>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
+import 'stylesheets/components/images/card'
+
 class Card extends Component {
   static propTypes = {
     image: React.PropTypes.object
@@ -31,15 +33,13 @@ class Card extends Component {
   render() {
     let { image } = this.props
     return (
-      <span key={image._id}>
-        <Link to={`/image/${image.uniqueid}`}>
-          <div className="image-card">
-            <i className="fa fa-search-plus"></i>
-            <img ref="image" src={image.web_url} onLoad={this.gifHandler} className="hide" onMouseOut={this.hoverHandler} /><br/>
-            <canvas ref="canvas" width="190" height="190" className="show" onMouseOver={this.hoverHandler} />
-          </div>
-        </Link>
-      </span>
+      <Link to={`/image/${image.uniqueid}`} key={image._id} className="card">
+        <div>
+          <i className="fa fa-search-plus"></i>
+          <img ref="image" src={image.web_url} onLoad={this.gifHandler} className="hide" onMouseOut={this.hoverHandler} /><br/>
+          <canvas ref="canvas" width="190" height="190" className="show" onMouseOver={this.hoverHandler} />
+        </div>
+      </Link>
     )
   }
 }

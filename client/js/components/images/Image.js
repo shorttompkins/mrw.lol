@@ -6,6 +6,8 @@ import TagsStore from '../../stores/TagsStore'
 import { Link } from 'react-router'
 import Tag from './Tag'
 
+import 'stylesheets/components/images/image'
+
 class Image extends Component {
   static getStores() {
     return [ImageStore, UserStore, TagsStore]
