@@ -34,6 +34,7 @@ if (process.env.NODE_ENV === 'prod') {
   mongoose.connect(`${config.mongodb.host}${config.mongodb.db}`)
 }
 mongoose.connection.on('open', () => {
+  /*eslint-disable no-console */
   console.log('MongoDB connected.')
 
   // configure the server after MongoDB has connected:
