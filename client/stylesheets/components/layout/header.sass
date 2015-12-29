@@ -1,24 +1,4 @@
-body { font-family: Helvetica, Arial, sans-serif; font-size: 1em; }
-
-a { text-decoration: none; color: #404040; }
-button { outline: none; }
-
-.show { display: inherit; }
-.hide { display: none; }
-.float-right { float: right; }
-.float-left { float: left; }
-.clearfix { clear: both; }
-
-.error-message {
-  width: 100%;
-  padding: 10px;
-  background-color: #F3C6C6;
-  border: solid 1px red;
-  border-radius: 6px;
-  color: maroon;
-}
-
-.page-header {
+.header {
   position: relative;
   height: 80px;
   border-bottom: solid 1px #c0c0c0;
@@ -125,47 +105,19 @@ button { outline: none; }
   }
 }
 
-.add-button {
-  background-color: #33C133;
-  color: #fff;
-  border: none;
-  &.right {
-    float: right;
-  }
-  &.left {
-    float: left;
-    margin-right: 10px;
-  }
-}
-
-.body {
-  clear: both;
-
-  .random-link {
-    font-size: .75em;
-    float: right;
-    padding-top: .25em;
-  }
-}
-
-.comments {
-  .comment {
-    padding: 10px;
-    margin-bottom: 10px;
-    border: solid 1px #c0c0c0;
-    border-radius: 4px;
-    .byline {
-      font-size: .85em;
-      margin-bottom: 10px;
-      padding-bottom: 5px;
-      height: 30px;
-      border-left: solid 3px #d0d0d0;
-      padding-left: 5px;
-      img.avatar {
-        float: left;
-        width: 35px;
-        height: 35px;
-        padding-right: 5px;
+@media (max-width:992px) {
+  .header {
+    h1 {
+      width: 200px;
+    }
+    .main-search {
+      width: 50%;
+      left: 210px;
+      .input-group {
+        width: 100%;
+        .input {
+          width: 80%;
+        }
       }
     }
   }
