@@ -1,7 +1,7 @@
 FROM node:4.2.2
 WORKDIR /var/www
 
-RUN npm install -g gulp --loglevel error
+RUN npm install -g webpack --loglevel error
 
 # cache the npm install process separately
 ADD package.json /var/www/package.json
@@ -14,4 +14,4 @@ EXPOSE 3500
 ENV NODE_ENV=prod
 RUN npm rebuild node-sass
 RUN npm install --loglevel error
-RUN gulp build
+RUN webpack

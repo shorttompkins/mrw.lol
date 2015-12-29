@@ -19,7 +19,7 @@ $ npm install
 In separate terminal instances:
 
 ```bash
-$ gulp
+$ webpack
 $ monogd
 $ npm start
 ```
@@ -62,7 +62,7 @@ Note that this launches the Node server using the `--use_strict` flag so that ES
 ## Dependencies & Initial Setup
 
 ```bash
-$ npm install -g gulp eslint
+$ npm install -g webpack
 ```
 
 ```bash
@@ -72,19 +72,18 @@ $ npm install
 ## Build Process
 
 ```bash
-$ gulp build
+$ webpack
 ```
 
-Runs gulp which performs the following:
+Runs Webpack which performs the following:
 
- * clean
- * Browserify
- * Babel transformation (for ES6)
- * bundling to `app.js` & copying to `/server/public/mrw/app.js`
- * SASS transpiling to `main.css` & copying to `server/public/mrw/main.css`
+ * Babel transpiles for ES2015 support
+ * Bundles `app.js` to `./server/public/mrw`
+ * Transpiles and bundles `main.css` from SASS files
+ * ESLint syntax checking
 
 ```bash
-$ gulp
+$ webpack -w
 ```
 
 _Performs the standard build and runs watchers to perform automatic client rebuilds._
