@@ -11,7 +11,7 @@
           rel="stylesheet"
           integrity="sha256-k2/8zcNbxVIh5mnQ52A0r3a6jAgMGxFJFE2707UxGCk= sha512-ZV9KawG2Legkwp3nAlxLIVFudTauWuBpC10uEafMHYL0Sarrz5A7G79kXh5+5+woxQ5HM559XX2UZjMJ36Wplg=="
           crossorigin="anonymous">
-    <link href="/public/mrw/main.css" rel='stylesheet' type='text/css' />
+    <link href="{{hotReload}}/public/mrw/main.css" rel='stylesheet' type='text/css' />
     <link href="/public/css/main.css" rel='stylesheet' type='text/css' />
   </head>
   <body>
@@ -22,6 +22,7 @@
     window.userid = '{{loggedin}}';
     {{/if}}
     </script>
-    <script type="text/javascript" src="/public/mrw/app.js"></script>
+    <script type="text/javascript" src="{{hotReload}}/public/mrw/app.js"></script>
+
   </body>
 </html>

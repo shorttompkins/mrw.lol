@@ -10,6 +10,11 @@ module.exports = {
       loggedin: loggedin,
       userid: req.session.user_id
     }
+
+    if (req.app.get('config')['hot-reload']) {
+      model.hotReload = 'http://localhost:8080'
+    }
+
     if (req.params.imageid) {
       Models.Image.findOne({uniqueid: req.params.imageid}, (err, image) => {
         model.image = image

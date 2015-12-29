@@ -47,6 +47,7 @@ module.exports = function(app, config) {
         dumpExceptions: true,
         showStack: true
       }))
+      config['hot-reload'] = true
   }
 
   app.set('config', config)

@@ -12,7 +12,8 @@ module.exports = {
   entry: './client/js/main.js',
   output: {
     path: path.join(__dirname, './server/public/mrw/'),
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: 'http://localhost:8080/public/mrw/'
   },
   module: {
     preLoaders: [
