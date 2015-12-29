@@ -19,7 +19,7 @@ $ npm install
 In separate terminal instances:
 
 ```bash
-$ webpack
+$ npm run dev
 $ monogd
 $ npm start
 ```
@@ -65,14 +65,10 @@ Note that this launches the Node server using the `--use_strict` flag so that ES
 $ npm install -g webpack
 ```
 
-```bash
-$ npm install
-```
-
 ## Build Process
 
 ```bash
-$ webpack
+$ npm run build
 ```
 
 Runs Webpack which performs the following:
@@ -81,12 +77,13 @@ Runs Webpack which performs the following:
  * Bundles `app.js` to `./server/public/mrw`
  * Transpiles and bundles `main.css` from SASS files
  * ESLint syntax checking
+ * Minifies for Production
 
 ```bash
-$ webpack -w
+$ npm run dev
 ```
 
-_Performs the standard build and runs watchers to perform automatic client rebuilds._
+Runs the `webpack-dev-server` which supports hot reloading of the app within the browser.  Note that the Node web server assumes the Webpack dev server is serving up the app when running within a DEV environment.
 
 ## Using Docker (deployment)
 
