@@ -1,6 +1,6 @@
-const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const path = require('path')
+const autoprefixer = require('autoprefixer'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    path = require('path')
 
 const sassLoaders = [
   'css-loader',
