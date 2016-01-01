@@ -1,5 +1,9 @@
 # CHANGE LOG
 
+## 2015-12-31
+- Replaced Gulp with Webpack for the front-end build system
+- Introduced component modular stylesheets via `import`
+
 ## 2015-12-16
 - Introduce new Tag component
 - Refactor Image and ImagesList components to use Tag component
