@@ -1,3 +1,45 @@
+/************************
+ *
+ * connectToStores Higher Order Component
+ *
+ * Handle boilerplate implementation for Components that need to connect to
+ * and listen to Stores.
+ *
+ * To Use:  Create a base React component and wrap it via connectToStores(Component)
+ * call.  Ensure that the component contains the appropriate statics that the
+ * wrapper requires:
+
+ import React, { Component, PropTypes } from 'react'
+ import connectToStores from '../../utils/connectToStores'
+ import MyStore from '../../stores/MyStore'
+
+ class MyComponent extends Component {
+   // required:
+   static getStores() {
+     return [MyStore]
+   }
+
+   // required:
+   static getStateFromStores() {
+     return {
+       myStoreData: MyStore.getData()
+     }
+   }
+
+   // required: connectToStores will inject Store data as this.prop...
+   static propTypes = {
+     myStoreData: PropTypes.type
+   }
+
+   render() {
+     // refer to this.props.myStoreData when rendering
+   }
+ }
+
+ export default connectToStores(MyComponent)
+ *
+ ************************/
+
 import React, { Component } from 'react'
 import { isFunction } from 'lodash'
 

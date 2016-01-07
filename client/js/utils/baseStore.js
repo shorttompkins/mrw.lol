@@ -1,3 +1,30 @@
+/************************
+ *
+ * baseStore Wrapper
+ *
+ * Handle boilerplate implementation for EventEmitter and change listener
+ * handling.
+ *
+ * To Use:  import the baseStore.  When creating a new Store pass the store config
+ * object into the baseStore wrapper:
+ *
+ * let MyStore = baseStore({
+ *   myStoreFunction() {
+ *     // do work etc.
+ *   }
+ * })
+ *
+ * Then assign your dispatchHandler separately on the new store:
+ *
+ * MyStore.dispatchHandler = (payload) => {
+ *   switch(payload.actionType) {
+ *      case ActionTypes.DO_SOMETHING:
+ *        ImageStore.emitChange()
+ *        break
+ *   }
+ * }
+ ************************/
+
 import AppDispatcher from '../dispatchers/Dispatcher'
 import { assign } from 'lodash'
 import { EventEmitter } from 'events'
